@@ -59,3 +59,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: UI
+
+### Shu Xian
+
+<img src="images/kip1425.png" width="200px">
+
+[[github](http://github.com/kip1425)]
+[[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: UX
