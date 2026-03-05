@@ -17,17 +17,29 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[homepage](https://www.fathmubina.com/)]
 [[github](https://github.com/memoflora)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/memoflora.md)]
 
 * Role: Developer
 * Responsibilities: Backend
+
+### Yifei
+
+<img src="images/phfabs.png" width="200px">
+
+[[github](https://github.com/phfabs)]
+[[portfolio](team/phfabs)]
+
+* Role: Developer
+* Responsibilities:
+    * Implementation
+    * Documentation
 
 ### Jane Doe
 
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/phfabs)]
 
 * Role: Team Lead
 * Responsibilities: UI
@@ -36,7 +48,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/johndoe)] [[portfolio](team/phfabs)]
 
 * Role: Developer
 * Responsibilities: Data
@@ -46,16 +58,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/phfabs)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Rachel
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/e1356231.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/e1356231)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
