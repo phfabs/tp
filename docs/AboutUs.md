@@ -11,7 +11,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-
 ### Raghad Altelmessani
 
 [[github](https://github.com/altelm)]
@@ -41,36 +40,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Responsibilities
     * Implementation
     * Documentation
-
-
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/phfabs)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/phfabs)]
-
-* Role: Developer
-* Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/phfabs)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
 
 ### Rachel
 
