@@ -274,14 +274,13 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* is a front-desk receptionist at a small-to-medium private fitness gym
+* has a need to manage member registrations and daily check-ins
 * prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
+* prefer fast keyboard-based workflows
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
-
+**Value proposition**: manage member details, track membership status, and store notes faster—making day-to-day operations smoother and reducing errors
 
 ### User stories
 
