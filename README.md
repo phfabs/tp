@@ -8,8 +8,16 @@ FitDesk is a desktop application designed to help front-desk receptionists at sm
 The application features a **graphical user interface (GUI)** while being optimized for fast keyboard-based commands, allowing receptionists to perform tasks quickly.
 
 ## Target Users
+Front-desk receptionists at small-to-medium private fitness gyms who:
+* Manage member registrations and daily check-ins using desktop computers  
+* Prefer fast, keyboard-based workflows  
 
 ## Benefits
+* Quickly check or update member contact info at the front desk  
+* Track membership types, expiry dates, and renewal status  
+* Store notes about special requests, class preferences, or health considerations  
+* Highlight recently added or updated members for quick reference  
+* Efficiently search or filter members by name, membership type, or last visit
 
 ## Key Features
 ### Membership Management:
