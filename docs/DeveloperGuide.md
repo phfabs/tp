@@ -303,7 +303,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `FitDesk` and the **Actor** is the `Receptionist`, unless specified otherwise)
 
-**Use case: Delete Member**
+**Use case: UC01 - Add Member**
+
+**MSS**
+
+1. Receptionist requests to add a member
+2. FitDesk prompts for required member details
+3. Receptionist fills in the respective member details
+4. FitDesk add the member
+
+    Use case ends.
+
+**Extensions**
+
+* 3a. The given inputs are invalid.
+    * 3a1.FitDesk shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: UC02 - Delete Member**
 
 **MSS**
 
@@ -326,7 +344,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
       Use case resumes at step 2.
 
-**Use case: Find Member**
+**Use case: UC03 - Find Member**
 
 **MSS**
 
@@ -349,7 +367,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
       Use case ends.
 
-**Use case: Edit Member**
+**Use case: UC04 - Edit Member**
 
 **MSS**
 
@@ -377,6 +395,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
       Use case ends.
 
+**Use case: UC05 - Filter Member List by Status**
+
+**MSS**
+1. Receptionist requests to filter member by status (Active/Inactive)
+2. FitDesk filters member list by specified status
+3. FitDesk displays filtered member list
+
+    Use case ends.
+
+**Extension**
+
+* 2a. The given status is invalid.
+    * 2a1.FitDesk shows an error message.
+
+    Use case ends.
 
 *{More to be added}*
 
