@@ -307,10 +307,10 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("gender", gender)
                     .add("date of Birth", dateOfBirth)
+                    .add("type", type)
                     .add("memberStatus", memberStatus)
                     .add("email", email)
                     .add("address", address)
-                    .add("type", type)
                     .add("tags", tags)
                     .toString();
         }
