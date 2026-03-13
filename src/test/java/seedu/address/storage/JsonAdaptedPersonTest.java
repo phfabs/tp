@@ -48,7 +48,7 @@ public class JsonAdaptedPersonTest {
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson("M001", INVALID_NAME, VALID_PHONE,
                 VALID_GENDER, VALID_DATEOFBIRTH,
-                VALID_EMAIL, VALID_ADDRESS, VALID_TYPE, "11-Mar-2026", VALID_TAGS);
+                VALID_EMAIL, VALID_ADDRESS, VALID_TYPE, "11-03-2026", VALID_TAGS);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -57,7 +57,7 @@ public class JsonAdaptedPersonTest {
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson("M001", null, VALID_PHONE,
                 VALID_GENDER, VALID_DATEOFBIRTH,
-                VALID_EMAIL, VALID_ADDRESS, VALID_TYPE, "11-Mar-2026", VALID_TAGS);
+                VALID_EMAIL, VALID_ADDRESS, VALID_TYPE, "11-03-2026", VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -67,7 +67,7 @@ public class JsonAdaptedPersonTest {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson("M001", VALID_NAME, INVALID_PHONE,
                         VALID_GENDER, VALID_DATEOFBIRTH,
-                        VALID_EMAIL, VALID_ADDRESS, VALID_TYPE, "11-Mar-2026", VALID_TAGS);
+                        VALID_EMAIL, VALID_ADDRESS, VALID_TYPE, "11-03-2026", VALID_TAGS);
         String expectedMessage = Phone.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -76,7 +76,7 @@ public class JsonAdaptedPersonTest {
     public void toModelType_nullPhone_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson("M001", VALID_NAME, null,
                 VALID_GENDER, VALID_DATEOFBIRTH,
-                VALID_EMAIL, VALID_ADDRESS, VALID_TYPE, "11-Mar-2026", VALID_TAGS);
+                VALID_EMAIL, VALID_ADDRESS, VALID_TYPE, "11-03-2026", VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
