@@ -10,9 +10,9 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.MembershipJoinDate;
 import seedu.address.model.person.MembershipType;
@@ -115,18 +115,18 @@ public class ParserUtil {
     //        return new MemberStatus(trimmedMemberStatus);
     //    }
     /**
-     * Parses a {@code String address} into an {@code Address}.
+     * Parses a {@code String emergencyContact} into an {@code EmergencyContact}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException if the given {@code emergencyContact} is invalid.
      */
-    public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+    public static EmergencyContact parseEmergencyContact(String emergencyContact) throws ParseException {
+        requireNonNull(emergencyContact);
+        String trimmedEmergencyContact = emergencyContact.trim();
+        if (!EmergencyContact.isValidEmergencyContact(trimmedEmergencyContact)) {
+            throw new ParseException(EmergencyContact.MESSAGE_CONSTRAINTS);
         }
-        return new Address(trimmedAddress);
+        return new EmergencyContact(trimmedEmergencyContact);
     }
 
     /**

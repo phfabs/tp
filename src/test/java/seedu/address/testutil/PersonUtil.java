@@ -41,7 +41,7 @@ public class PersonUtil {
         sb.append(PREFIX_MEMBERSTATUS + person.getMemberStatus().memberStatus + " ");
         sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
         sb.append(PREFIX_MEMBERSHIP_TYPE + person.getMembershipType().value + " ");
-        sb.append(PREFIX_ADDRESS + person.getAddress().value + " ");
+        sb.append(PREFIX_ADDRESS + person.getEmergencyContact().value + " ");
         person.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -61,7 +61,8 @@ public class PersonUtil {
         descriptor.getMemberStatus().ifPresent(memberStatus -> sb.append(PREFIX_MEMBERSTATUS)
                 .append(memberStatus.memberStatus).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
-        descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
+        descriptor.getEmergencyContact().ifPresent(
+                address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
         descriptor.getType().ifPresent(
                 membershipType -> sb.append(PREFIX_MEMBERSHIP_TYPE).append(membershipType.value).append(" "));
         if (descriptor.getTags().isPresent()) {

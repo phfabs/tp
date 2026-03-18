@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.GenerateMemberIds;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.MemberId;
 import seedu.address.model.person.MembershipJoinDate;
@@ -36,7 +36,7 @@ class JsonAdaptedPerson {
     private final String gender;
     private final String dateOfBirth;
     private final String email;
-    private final String address;
+    private final String emergencyContact;
     private final String type;
     private final String joinDate;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
@@ -50,7 +50,7 @@ class JsonAdaptedPerson {
             @JsonProperty("phone") String phone, @JsonProperty("gender") String gender,
             @JsonProperty("dateOfBirth") String dateOfBirth,
             @JsonProperty("email") String email,
-            @JsonProperty("address") String address, @JsonProperty("type") String type,
+            @JsonProperty("emergency contact") String emergencyContact, @JsonProperty("type") String type,
             @JsonProperty("join date") String joinDate, @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.id = id;
         this.name = name;
@@ -58,7 +58,7 @@ class JsonAdaptedPerson {
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
-        this.address = address;
+        this.emergencyContact = emergencyContact;
         this.type = type;
         this.joinDate = joinDate;
         if (tags != null) {
@@ -76,7 +76,7 @@ class JsonAdaptedPerson {
         gender = source.getGender().gender;
         dateOfBirth = source.getDateOfBirth().dateOfBirth;
         email = source.getEmail().value;
-        address = source.getAddress().value;
+        emergencyContact = source.getEmergencyContact().value;
         type = source.getMembershipType().toString();
         joinDate = source.getJoinDate().toString();
         tags.addAll(source.getTags().stream()
@@ -143,13 +143,14 @@ class JsonAdaptedPerson {
         }
         final Email modelEmail = new Email(email);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+        if (emergencyContact == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, EmergencyContact.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        if (!EmergencyContact.isValidEmergencyContact(emergencyContact)) {
+            throw new IllegalValueException(EmergencyContact.MESSAGE_CONSTRAINTS);
         }
-        final Address modelAddress = new Address(address);
+        final EmergencyContact modelEmergencyContact = new EmergencyContact(emergencyContact);
 
         if (type == null) {
             throw new IllegalValueException(
@@ -168,7 +169,7 @@ class JsonAdaptedPerson {
         }
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelId, modelName, modelPhone, modelGender, modelDateOfBirth,
-                          modelEmail, modelAddress, modelType, modelJoinDate, modelTags);
+                          modelEmail, modelEmergencyContact, modelType, modelJoinDate, modelTags);
     }
 
 }

@@ -71,7 +71,7 @@ public class PersonCard extends UiPart<Region> {
         gender.setText("Gender: " + person.getGender().gender);
         dateOfBirth.setText(person.getDateOfBirth().dateOfBirth);
         memberStatus.setText("Status: " + person.getMemberStatus().memberStatus);
-        address.setText(person.getAddress().value);
+        address.setText(person.getEmergencyContact().value);
         email.setText(person.getEmail().value);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
