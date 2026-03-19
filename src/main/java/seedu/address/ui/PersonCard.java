@@ -1,10 +1,7 @@
 package seedu.address.ui;
 
-import java.util.Comparator;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
@@ -35,25 +32,9 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label phone;
-    @FXML
-    private Label gender;
-    @FXML
-    private Label dateOfBirth;
-    @FXML
     private Label memberStatus;
     @FXML
-    private Label emergencyContact;
-    @FXML
-    private Label email;
-    @FXML
-    private Label type;
-    @FXML
-    private Label joinDate;
-    @FXML
     private Label expiryDate;
-    @FXML
-    private FlowPane tags;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -61,20 +42,16 @@ public class PersonCard extends UiPart<Region> {
     public PersonCard(Person person, int displayedIndex) {
         super(FXML);
         this.person = person;
-        id.setText(displayedIndex + ". ");
+        id.setText(displayedIndex + "");
         memberId.setText(person.getId().toString());
-        type.setText("Type: " + person.getMembershipType().toString());
-        joinDate.setText("Date Joined: " + person.getJoinDate().toString());
-        expiryDate.setText("Expiry: " + person.getExpiryDate().toString());
+        expiryDate.setText(person.getExpiryDate().toString());
         name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().value);
-        gender.setText("Gender: " + person.getGender().gender);
-        dateOfBirth.setText(person.getDateOfBirth().dateOfBirth);
-        memberStatus.setText("Status: " + person.getMemberStatus().memberStatus);
-        emergencyContact.setText(person.getEmergencyContact().value);
-        email.setText(person.getEmail().value);
-        person.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        memberStatus.setText(person.getMemberStatus().memberStatus);
+        if (person.getMemberStatus().memberStatus.equalsIgnoreCase("valid")) {
+            memberStatus.getStyleClass().add("valid-status");
+        } else {
+            memberStatus.getStyleClass().add("invalid-status");
+        }
+
     }
 }
