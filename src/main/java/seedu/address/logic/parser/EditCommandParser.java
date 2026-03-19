@@ -73,7 +73,8 @@ public class EditCommandParser implements Parser<EditCommand> {
                     ParserUtil.parseEmergencyContact(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         if (argMultimap.getValue(PREFIX_MEMBERSHIP_TYPE).isPresent()) {
-            editPersonDescriptor.setType(ParserUtil.parseType(argMultimap.getValue(PREFIX_MEMBERSHIP_TYPE).get()));
+            editPersonDescriptor.setMembershipType(
+                    ParserUtil.parseType(argMultimap.getValue(PREFIX_MEMBERSHIP_TYPE).get()));
         }
         if (argMultimap.getValue(PREFIX_JOIN_DATE).isPresent()) {
             editPersonDescriptor.setJoinDate(ParserUtil.parseJoinDate(argMultimap.getValue(PREFIX_JOIN_DATE).get()));

@@ -177,7 +177,7 @@ public class EditCommand extends Command {
             setMemberStatus(toCopy.memberStatus);
             setEmail(toCopy.email);
             setEmergencyContact(toCopy.emergencyContact);
-            setType(toCopy.type);
+            setMembershipType(toCopy.type);
             setJoinDate(toCopy.joinDate);
             setTags(toCopy.tags);
         }
@@ -246,7 +246,7 @@ public class EditCommand extends Command {
             return Optional.ofNullable(emergencyContact);
         }
 
-        public void setType(MembershipType type) {
+        public void setMembershipType(MembershipType type) {
             this.type = type;
         }
 

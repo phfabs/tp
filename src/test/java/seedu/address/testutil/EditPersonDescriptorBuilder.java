@@ -42,7 +42,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setEmail(person.getEmail());
         descriptor.setEmergencyContact(person.getEmergencyContact());
         descriptor.setJoinDate(person.getJoinDate());
-        descriptor.setType(person.getMembershipType());
+        descriptor.setMembershipType(person.getMembershipType());
         descriptor.setTags(person.getTags());
     }
 
@@ -98,7 +98,7 @@ public class EditPersonDescriptorBuilder {
      * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withType(String type) {
-        descriptor.setType(new MembershipType(type));
+        descriptor.setMembershipType(new MembershipType(type));
         return this;
     }
 
