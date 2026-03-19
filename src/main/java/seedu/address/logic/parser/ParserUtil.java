@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+
 import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
@@ -9,11 +10,11 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.Gender;
-//import seedu.address.model.person.MemberStatus;
+import seedu.address.model.person.MembershipJoinDate;
 import seedu.address.model.person.MembershipType;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -114,18 +115,33 @@ public class ParserUtil {
     //        return new MemberStatus(trimmedMemberStatus);
     //    }
     /**
-     * Parses a {@code String address} into an {@code Address}.
+     * Parses a {@code String emergencyContact} into an {@code EmergencyContact}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException if the given {@code emergencyContact} is invalid.
      */
-    public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+    public static EmergencyContact parseEmergencyContact(String emergencyContact) throws ParseException {
+        requireNonNull(emergencyContact);
+        String trimmedEmergencyContact = emergencyContact.trim();
+        if (!EmergencyContact.isValidEmergencyContact(trimmedEmergencyContact)) {
+            throw new ParseException(EmergencyContact.MESSAGE_CONSTRAINTS);
         }
-        return new Address(trimmedAddress);
+        return new EmergencyContact(trimmedEmergencyContact);
+    }
+
+    /**
+     * Parses a {@code String joinDate} into a {@code MembershipJoinDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code joinDate} is invalid.
+     */
+    public static MembershipJoinDate parseJoinDate(String joinDate) throws ParseException {
+        requireNonNull(joinDate);
+        String trimmedJoinDate = joinDate.trim();
+        if (!MembershipJoinDate.isValidJoinDate(trimmedJoinDate)) {
+            throw new ParseException(MembershipJoinDate.MESSAGE_CONSTRAINTS);
+        }
+        return new MembershipJoinDate(trimmedJoinDate);
     }
 
     /**

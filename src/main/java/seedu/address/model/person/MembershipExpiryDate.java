@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
  * Represents the start date of a member's membership
  */
 public class MembershipExpiryDate {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public final String value;
     public final LocalDate expiryDate;
     /**

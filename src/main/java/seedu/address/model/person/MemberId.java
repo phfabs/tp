@@ -5,6 +5,7 @@ package seedu.address.model.person;
  */
 public class MemberId {
     private final int id;
+
     public MemberId(int id) {
         this.id = id;
     }

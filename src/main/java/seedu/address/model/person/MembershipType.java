@@ -23,7 +23,7 @@ public class MembershipType {
     public MembershipType(String type) {
         requireNonNull(type);
         checkArgument(isValidType(type), MESSAGE_CONSTRAINTS);
-        value = type.toLowerCase();
+        this.value = type.toLowerCase();
     }
 
     /**

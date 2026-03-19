@@ -5,11 +5,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.Gender;
-import seedu.address.model.person.MemberStatus;
 import seedu.address.model.person.MembershipType;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -40,10 +39,10 @@ public class EditPersonDescriptorBuilder {
         descriptor.setPhone(person.getPhone());
         descriptor.setGender(person.getGender());
         descriptor.setDateOfBirth(person.getDateOfBirth());
-        descriptor.setMemberStatus(person.getMemberStatus());
         descriptor.setEmail(person.getEmail());
-        descriptor.setAddress(person.getAddress());
-        descriptor.setType(person.getMembershipType());
+        descriptor.setEmergencyContact(person.getEmergencyContact());
+        descriptor.setJoinDate(person.getJoinDate());
+        descriptor.setMembershipType(person.getMembershipType());
         descriptor.setTags(person.getTags());
     }
 
@@ -80,14 +79,6 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code MemberStatus} of the {@code EditPersonDescriptor} that we are building.
-     */
-    public EditPersonDescriptorBuilder withMemberStatus(String memberStatus) {
-        descriptor.setMemberStatus(new MemberStatus(memberStatus));
-        return this;
-    }
-
-    /**
      * Sets the {@code Email} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withEmail(String email) {
@@ -96,10 +87,10 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code EmergencyContact} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
+    public EditPersonDescriptorBuilder withEmergencyContact(String emergencyContact) {
+        descriptor.setEmergencyContact(new EmergencyContact(emergencyContact));
         return this;
     }
 
@@ -107,7 +98,7 @@ public class EditPersonDescriptorBuilder {
      * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withType(String type) {
-        descriptor.setType(new MembershipType(type));
+        descriptor.setMembershipType(new MembershipType(type));
         return this;
     }
 

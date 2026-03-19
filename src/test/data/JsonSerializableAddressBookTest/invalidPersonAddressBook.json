@@ -6,6 +6,7 @@
     "dateOfBirth": "08-09-1999",
     "memberStatus": "valid",
     "email": "invalid@email!3e",
-    "address": "4th street"
+    "emergency contact": "4th street",
+    "type" : "Annual"
   } ]
 }

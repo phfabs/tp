@@ -6,7 +6,8 @@
     "dateOfBirth": "08-08-1998",
     "memberStatus": "valid",
     "email": "alice@example.com",
-    "address": "123, Jurong West Ave 6, #08-111",
+    "emergency contact": "81236811",
+    "type" : "Annual",
     "tags": [ "friends" ]
   }, {
     "name": "Alice Pauline",
@@ -15,6 +16,7 @@
     "dateOfBirth": "08-08-1998",
     "memberStatus": "valid",
     "email": "pauline@example.com",
-    "address": "4th street"
+    "emergency contact": "81446811",
+    "type" : "Annual"
   } ]
 }

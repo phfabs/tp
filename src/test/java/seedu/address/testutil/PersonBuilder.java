@@ -3,9 +3,9 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfBirth;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.MemberId;
 import seedu.address.model.person.MembershipJoinDate;
@@ -27,9 +27,9 @@ public class PersonBuilder {
     public static final String DEFAULT_GENDER = "F";
     public static final String DEFAULT_DATEOFBIRTH = "02-02-2000";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_EMERGENCY_CONTACT = "91236811";
     public static final String DEFAULT_TYPE = "annual";
-    public static final String DEFAULT_JOIN_DATE = "11-Mar-2026";
+    public static final String DEFAULT_JOIN_DATE = "11-03-2026";
 
     private MemberId id;
     private Name name;
@@ -37,7 +37,7 @@ public class PersonBuilder {
     private Gender gender;
     private DateOfBirth dateOfBirth;
     private Email email;
-    private Address address;
+    private EmergencyContact emergencyContact;
     private MembershipType type;
     private MembershipJoinDate joinDate;
     private Set<Tag> tags;
@@ -52,7 +52,7 @@ public class PersonBuilder {
         gender = new Gender(DEFAULT_GENDER);
         dateOfBirth = new DateOfBirth(DEFAULT_DATEOFBIRTH);
         email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
+        emergencyContact = new EmergencyContact(DEFAULT_EMERGENCY_CONTACT);
         type = new MembershipType(DEFAULT_TYPE);
         joinDate = new MembershipJoinDate(DEFAULT_JOIN_DATE);
         tags = new HashSet<>();
@@ -68,7 +68,7 @@ public class PersonBuilder {
         gender = personToCopy.getGender();
         dateOfBirth = personToCopy.getDateOfBirth();
         email = personToCopy.getEmail();
-        address = personToCopy.getAddress();
+        emergencyContact = personToCopy.getEmergencyContact();
         type = personToCopy.getMembershipType();
         joinDate = personToCopy.getJoinDate();
         tags = new HashSet<>(personToCopy.getTags());
@@ -91,10 +91,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Person} that we are building.
+     * Sets the {@code EmergencyContact} of the {@code Person} that we are building.
      */
-    public PersonBuilder withAddress(String address) {
-        this.address = new Address(address);
+    public PersonBuilder withEmergencyContact(String emergencyContact) {
+        this.emergencyContact = new EmergencyContact(emergencyContact);
         return this;
     }
 
@@ -114,10 +114,10 @@ public class PersonBuilder {
         return this;
     }
     /**
-     * Sets the {@code Phone} of the {@code Person} that we are building.
+     * Sets the {@code Id} of the {@code Person} that we are building.
      */
-    public PersonBuilder withId(int id) {
-        this.id = new MemberId(id);
+    public PersonBuilder withId(MemberId id) {
+        this.id = id;
         return this;
     }
 
@@ -144,7 +144,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(id, name, phone, gender, dateOfBirth, email, address, type, joinDate, tags);
+        return new Person(id, name, phone, gender, dateOfBirth, email, emergencyContact, type, joinDate, tags);
     }
 
 }

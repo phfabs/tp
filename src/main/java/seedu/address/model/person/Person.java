@@ -26,7 +26,7 @@ public class Person {
     private final MemberStatus memberStatus;
 
     // Data fields
-    private final Address address;
+    private final EmergencyContact emergencyContact;
     private final MembershipType membershipType;
     private final MembershipJoinDate joinDate;
     private final MembershipExpiryDate expiryDate;
@@ -36,16 +36,16 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(MemberId id, Name name, Phone phone, Gender gender,
-                  DateOfBirth dateOfBirth, Email email, Address address,
+                  DateOfBirth dateOfBirth, Email email, EmergencyContact emergencyContact,
                   MembershipType type, MembershipJoinDate joinDate, Set<Tag> tags) {
-        requireAllNonNull(id, name, phone, email, address, type, joinDate, tags);
+        requireAllNonNull(id, name, phone, email, emergencyContact, type, joinDate, tags);
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
-        this.address = address;
+        this.emergencyContact = emergencyContact;
         this.membershipType = type;
         this.joinDate = joinDate;
         this.expiryDate = new MembershipExpiryDate(joinDate.getDate(), membershipType);
@@ -69,8 +69,8 @@ public class Person {
         return email;
     }
 
-    public Address getAddress() {
-        return address;
+    public EmergencyContact getEmergencyContact() {
+        return emergencyContact;
     }
     public MembershipType getMembershipType() {
         return membershipType;
@@ -136,11 +136,11 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && gender.equals(otherPerson.gender)
                 && dateOfBirth.equals(otherPerson.dateOfBirth)
-                && memberStatus.equals(otherPerson.memberStatus)
-                && address.equals(otherPerson.address)
+                //&& memberStatus.equals(otherPerson.memberStatus)
+                && emergencyContact.equals(otherPerson.emergencyContact)
                 && membershipType.equals(otherPerson.membershipType)
-                && joinDate.equals(otherPerson.joinDate)
-                && expiryDate.equals(otherPerson.expiryDate)
+                //&& joinDate.equals(otherPerson.joinDate)
+                //&& expiryDate.equals(otherPerson.expiryDate)
                 && tags.equals(otherPerson.tags)
                 && id.equals(otherPerson.id);
     }
@@ -149,7 +149,7 @@ public class Person {
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(id, name, phone, email, gender, dateOfBirth,
-                memberStatus, address, membershipType, joinDate, expiryDate, tags);
+                memberStatus, emergencyContact, membershipType, joinDate, expiryDate, tags);
     }
 
     @Override
@@ -158,14 +158,14 @@ public class Person {
                 .add("member id", id.toString())
                 .add("name", name)
                 .add("phone", phone)
-                .add("email", email)
                 .add("gender", gender)
                 .add("date of birth", dateOfBirth)
-                .add("member status", memberStatus)
-                .add("address", address)
                 .add("type", membershipType)
-                .add("join date", joinDate.toString())
-                .add("expiry date", expiryDate.toString())
+                //.add("member status", memberStatus)
+                .add("email", email)
+                .add("emergency contact", emergencyContact)
+                //.add("join date", joinDate.toString())
+                //.add("expiry date", expiryDate.toString())
                 .add("tags", tags)
                 .toString();
     }

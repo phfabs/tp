@@ -15,6 +15,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_MEMBERSHIP_TYPE = new Prefix("m/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
-    public static final Prefix PREFIX_MEMBERSHIP_EXPIRY_DATE = new Prefix("exp/");
+    public static final Prefix PREFIX_JOIN_DATE = new Prefix("j/");
     public static final Prefix PREFIX_EMERGENCY_CONTACT = new Prefix("ec/");
 }
