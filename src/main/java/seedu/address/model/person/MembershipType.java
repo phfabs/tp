@@ -23,7 +23,11 @@ public class MembershipType {
     public MembershipType(String type) {
         requireNonNull(type);
         checkArgument(isValidType(type), MESSAGE_CONSTRAINTS);
-        this.value = type.toLowerCase();
+        if (type.equalsIgnoreCase("annual")) {
+            this.value = "Annual";
+        } else {
+            this.value = "Monthly";
+        }
     }
 
     /**
