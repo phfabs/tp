@@ -31,9 +31,12 @@ public class EmergencyContactTest {
         assertFalse(EmergencyContact.isValidEmergencyContact("emergency contact")); // non-numeric
         assertFalse(EmergencyContact.isValidEmergencyContact("9011p041")); // alphabets within digits
         assertFalse(EmergencyContact.isValidEmergencyContact("9312 1534")); // spaces within digits
+        assertFalse(EmergencyContact.isValidEmergencyContact("73121534")); // first digit not 6,8 or 9
 
-        // valid emergency contact numbers
-        assertTrue(EmergencyContact.isValidEmergencyContact("93121534"));
+        // valid 8 digit emergency contact numbers
+        assertTrue(EmergencyContact.isValidEmergencyContact("63121534")); //starts with 6
+        assertTrue(EmergencyContact.isValidEmergencyContact("83121534")); //starts with 8
+        assertTrue(EmergencyContact.isValidEmergencyContact("93121534")); //starts with 9
     }
 
     @Test
