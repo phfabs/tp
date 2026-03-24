@@ -97,6 +97,9 @@ Shows a list of all members in the list.
 
 Format: `list`
 
+Example:
+![list](images/list.png)
+
 ### Editing a person : `edit`
 
 Edits an existing member in the list.
@@ -129,7 +132,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findresult.png)
+  ![result for 'find alex david'](images/find_result.png)
 
 ### Filtering members by fields: `filter`
 
@@ -153,7 +156,12 @@ Format: `delete INDEX`
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+  1. `list`
+     ![list](images/list_2.png)
+  2. `delete 2`
+  ![deleted member](images/delete_2.png)
+  
+* `find Alex` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
 ### Clearing all entries : `clear`
 
