@@ -31,7 +31,7 @@ FitDesk is a **desktop app for front-desk receptionists** at small-to-medium pri
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 g/M d/19-01-2004 m/annual e/johnd@example.com ec/98723347` : Adds a member named `John Doe` to the member list.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -88,7 +88,7 @@ Format: `add n/NAME p/PHONE_NUMBER g/GENDER d/DATE_OF_BIRTH m/MEMBERSHIP_TYPE e/
 </box>
 
 Examples:
-* `add n/John Doe p/98765432 g/M d/19-01-2004 m/annual e/johnd@example.com a/98723347`
+* `add n/John Doe p/98765432 g/M d/19-01-2004 m/annual e/johnd@example.com ec/98723347`
 
 ![add new member](images/add_member.png)
 
@@ -96,7 +96,7 @@ A new member `John Doe` is added to the member list
 
 ![added member](images/added.png)
 
-* `add n/Betsy Crowe m/monthly a/93349011 e/betsycrowe@example.com g/F d/28-01-2002 p/1234567`
+* `add n/Betsy Crowe m/monthly ec/93349011 e/betsycrowe@example.com g/F d/28-01-2002 p/91234567`
 
 ### Listing all persons : `list`
 
@@ -219,6 +219,15 @@ Clears all entries from the address book.
 
 Format: `clear`
 
+### Undoing the last command : `undo`
+
+Undoes the most recent undoable command (add, edit, delete, clear).
+
+Format: `undo`
+
+Example:
+* `undo`
+
 ### Exiting the program : `exit`
 
 Exits the program.
@@ -273,4 +282,5 @@ Action     | Format, Examples
 **Renew**   | `renew INDEX [m/MEMBERSHIP_TYPE] ]`<br> e.g., `renew 2 m/monthly`
 **Details**   | `details INDEX`<br> e.g., `details 1`
 **List**   | `list`
+**Undo**   | `undo`
 **Help**   | `help`

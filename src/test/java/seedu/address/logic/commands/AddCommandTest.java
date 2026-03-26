@@ -20,10 +20,13 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.TypicalPersons;
 
 public class AddCommandTest {
 
@@ -51,6 +54,42 @@ public class AddCommandTest {
         ModelStub modelStub = new ModelStubWithPerson(validPerson);
 
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+    }
+
+    @Test
+    public void executeUndo_addRestoresModel() throws Exception {
+        Model model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+
+        Person newPerson = new PersonBuilder().withName("Undo Add").withEmail("undoadd@example.com").build();
+        AddCommand addCommand = new AddCommand(newPerson);
+
+        addCommand.execute(model);
+        addCommand.undo(model);
+
+        assertTrue(addCommand.isUndoable());
+        assertEquals(expectedModel, model);
+    }
+
+    @Test
+    public void undo_withoutExecute_throwsCommandException() {
+        Model model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs());
+        Person newPerson = new PersonBuilder().withName("Undo Add").withEmail("undoadd@example.com").build();
+        AddCommand addCommand = new AddCommand(newPerson);
+
+        assertThrows(CommandException.class, "Unable to undo add: person not found.", () -> addCommand.undo(model));
+    }
+
+    @Test
+    public void undo_personMissingAfterExecute_throwsCommandException() throws Exception {
+        Model model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs());
+        Person newPerson = new PersonBuilder().withName("Undo Add Missing").withEmail("undoadd2@example.com").build();
+        AddCommand addCommand = new AddCommand(newPerson);
+
+        addCommand.execute(model);
+        model.deletePerson(newPerson);
+
+        assertThrows(CommandException.class, "Unable to undo add: person not found.", () -> addCommand.undo(model));
     }
 
     @Test

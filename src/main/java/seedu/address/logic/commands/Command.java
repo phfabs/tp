@@ -17,4 +17,20 @@ public abstract class Command {
      */
     public abstract CommandResult execute(Model model) throws CommandException;
 
+    /**
+     * Returns true if the command supports undo.
+     */
+    public boolean isUndoable() {
+        return false;
+    }
+
+    /**
+     * Undoes the command.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @throws CommandException If an error occurs during undo.
+     */
+    public void undo(Model model) throws CommandException {
+        throw new CommandException("This command cannot be undone.");
+    }
 }

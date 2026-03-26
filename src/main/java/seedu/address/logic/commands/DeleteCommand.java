@@ -8,6 +8,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
@@ -26,6 +27,8 @@ public class DeleteCommand extends Command {
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 
     private final Index targetIndex;
+    private Person deletedPerson;
+    private AddressBook previousAddressBook;
 
     public DeleteCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
@@ -41,8 +44,30 @@ public class DeleteCommand extends Command {
         }
 
         Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
+        previousAddressBook = new AddressBook(model.getAddressBook());
         model.deletePerson(personToDelete);
+        deletedPerson = personToDelete;
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(personToDelete)));
+    }
+
+    @Override
+    public boolean isUndoable() {
+        return true;
+    }
+
+    @Override
+    public void undo(Model model) throws CommandException {
+        requireNonNull(model);
+
+        if (deletedPerson == null || model.hasPerson(deletedPerson)) {
+            throw new CommandException("Unable to undo delete: person already exists.");
+        }
+
+        if (previousAddressBook == null) {
+            throw new CommandException("Unable to undo delete: no previous state stored.");
+        }
+
+        model.setAddressBook(new AddressBook(previousAddressBook));
     }
 
     @Override
