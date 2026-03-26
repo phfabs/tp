@@ -72,7 +72,7 @@ class JsonAdaptedPerson {
         name = source.getName().fullName;
         phone = source.getPhone().value;
         gender = source.getGender().gender;
-        dateOfBirth = source.getDateOfBirth().dateOfBirth;
+        dateOfBirth = source.getDateOfBirth().toString();
         email = source.getEmail().value;
         emergencyContact = source.getEmergencyContact().value;
         type = source.getMembershipType().toString();

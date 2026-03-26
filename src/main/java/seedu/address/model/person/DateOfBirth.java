@@ -3,6 +3,9 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Represents a Person's date of birth in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDateOfBirth(String)}
@@ -12,18 +15,19 @@ public class DateOfBirth {
     public static final String MESSAGE_CONSTRAINTS =
             "Date of Birth should be in the format DD-MM-YYYY and should be a valid date.";
     public static final String VALIDATION_REGEX = "^((0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-((19|20)\\d\\d))$";
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-    public final String dateOfBirth;
+    public final LocalDate dateOfBirth;
 
     /**
      * Constructs a {@code DateOfBirth}.
      *
-     * @param dateOfBirth A valid date of birth.
+     * @param dateOfBirth A valid date of birth string in DD-MM-YYYY format.
      */
     public DateOfBirth(String dateOfBirth) {
         requireNonNull(dateOfBirth);
         checkArgument(isValidDateOfBirth(dateOfBirth), MESSAGE_CONSTRAINTS);
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = LocalDate.parse(dateOfBirth, FORMATTER);
     }
 
     /**
@@ -35,7 +39,7 @@ public class DateOfBirth {
 
     @Override
     public String toString() {
-        return this.dateOfBirth;
+        return this.dateOfBirth.format(FORMATTER);
     }
 
     @Override

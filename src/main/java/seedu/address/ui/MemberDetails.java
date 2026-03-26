@@ -65,7 +65,7 @@ public class MemberDetails extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         gender.setText("Gender: " + person.getGender().gender);
-        dateOfBirth.setText("Date of Birth: " + person.getDateOfBirth().dateOfBirth);
+        dateOfBirth.setText("Date of Birth: " + person.getDateOfBirth().toString());
         emergencyContact.setText("Emergency Contact: " + person.getEmergencyContact().value);
         email.setText(person.getEmail().value);
         type.setText(person.getMembershipType().toString());
