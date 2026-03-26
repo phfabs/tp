@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Stores previously entered commands and allows navigating through them.
@@ -28,36 +27,36 @@ public class CommandHistory {
     /**
      * Returns the previous command (if any) and moves the pointer backwards.
      *
-     * @return the previous command if it exists
+     * @return the previous command, or {@code null} if no previous command exists
      */
-    public Optional<String> previous() {
+    public String previous() {
         if (pointer <= 0) {
-            return Optional.empty();
+            return null;
         }
 
         pointer--;
-        return Optional.of(commands.get(pointer));
+        return commands.get(pointer);
     }
 
     /**
      * Returns the next command (if any) and moves the pointer forwards.
      * If the pointer moves past the most recent command, it will point to a blank entry.
      *
-     * @return the next command if it exists
+     * @return the next command, or {@code null} if no next command exists
      */
-    public Optional<String> next() {
+    public String next() {
         if (commands.isEmpty()) {
             pointer = 0;
-            return Optional.empty();
+            return null;
         }
 
         if (pointer < commands.size() - 1) {
             pointer++;
-            return Optional.of(commands.get(pointer));
+            return commands.get(pointer);
         }
 
         pointer = commands.size();
-        return Optional.empty();
+        return null;
     }
 
     /**

@@ -102,10 +102,13 @@ public class CommandBox extends UiPart<Region> {
      * The cursor will be at the end of the text in the command box after this function is called.
      */
     private void showPreviousCommand() {
-        commandHistory.previous().ifPresent(previousCommand -> {
-            commandTextField.setText(previousCommand);
-            commandTextField.positionCaret(commandTextField.getText().length());
-        });
+        String previousCommand = commandHistory.previous();
+        if (previousCommand == null) {
+            return;
+        }
+
+        commandTextField.setText(previousCommand);
+        commandTextField.positionCaret(commandTextField.getText().length());
     }
 
     /**
@@ -113,12 +116,14 @@ public class CommandBox extends UiPart<Region> {
      * The cursor will be at the end of the text in the command box after this function is called.
      */
     private void showNextCommand() {
-        commandHistory.next().ifPresentOrElse(nextCommand -> {
-            commandTextField.setText(nextCommand);
-            commandTextField.positionCaret(commandTextField.getText().length());
-        }, () -> {
+        String nextCommand = commandHistory.next();
+        if (nextCommand == null) {
             commandTextField.setText("");
-        });
+            return;
+        }
+
+        commandTextField.setText(nextCommand);
+        commandTextField.positionCaret(commandTextField.getText().length());
     }
 
 }
