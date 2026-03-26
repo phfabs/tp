@@ -26,6 +26,22 @@ public class MembershipExpiryDate {
         }
     }
 
+    /**
+     *
+     */
+    public MembershipExpiryDate(String date) {
+        this.value = date;
+        this.expiryDate = LocalDate.parse(date, FORMATTER);
+    }
+
+    /**
+     *
+     */
+    public MembershipExpiryDate(LocalDate date) {
+        this.value = date.format(FORMATTER);
+        this.expiryDate = date;
+    }
+
     public LocalDate getExpiryDate() {
         return this.expiryDate;
     }

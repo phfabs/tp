@@ -19,6 +19,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.MemberId;
+import seedu.address.model.person.MembershipExpiryDate;
 import seedu.address.model.person.MembershipJoinDate;
 import seedu.address.model.person.MembershipType;
 import seedu.address.model.person.Name;
@@ -57,8 +58,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         MembershipType membershipType = ParserUtil.parseType(argMultimap.getValue(PREFIX_MEMBERSHIP_TYPE).get());
         MemberId memberId = GenerateMemberIds.generateNextId();
         MembershipJoinDate joinDate = new MembershipJoinDate();
+        MembershipExpiryDate expiryDate = new MembershipExpiryDate(joinDate.getDate(), membershipType);
         Person person = new Person(memberId, name, phone, gender, dateOfBirth, email, emergencyContact,
-                membershipType, joinDate);
+                membershipType, joinDate, expiryDate);
 
         return new AddCommand(person);
     }

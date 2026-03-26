@@ -5,6 +5,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.MemberId;
+import seedu.address.model.person.MembershipExpiryDate;
 import seedu.address.model.person.MembershipJoinDate;
 import seedu.address.model.person.MembershipType;
 import seedu.address.model.person.Name;
@@ -25,6 +26,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMERGENCY_CONTACT = "91236811";
     public static final String DEFAULT_TYPE = "annual";
     public static final String DEFAULT_JOIN_DATE = "11-03-2026";
+    public static final String DEFAULT_EXPIRY_DATE = "11-03-2027";
 
     private MemberId id;
     private Name name;
@@ -35,7 +37,7 @@ public class PersonBuilder {
     private EmergencyContact emergencyContact;
     private MembershipType type;
     private MembershipJoinDate joinDate;
-
+    private MembershipExpiryDate expiryDate;
     /**
      * Creates a {@code PersonBuilder} with the default details.
      */
@@ -49,6 +51,7 @@ public class PersonBuilder {
         emergencyContact = new EmergencyContact(DEFAULT_EMERGENCY_CONTACT);
         type = new MembershipType(DEFAULT_TYPE);
         joinDate = new MembershipJoinDate(DEFAULT_JOIN_DATE);
+        expiryDate = new MembershipExpiryDate(DEFAULT_EXPIRY_DATE);
     }
 
     /**
@@ -64,6 +67,7 @@ public class PersonBuilder {
         emergencyContact = personToCopy.getEmergencyContact();
         type = personToCopy.getMembershipType();
         joinDate = personToCopy.getJoinDate();
+        expiryDate = personToCopy.getExpiryDate();
     }
 
     /**
@@ -128,7 +132,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(id, name, phone, gender, dateOfBirth, email, emergencyContact, type, joinDate);
+        return new Person(id, name, phone, gender, dateOfBirth, email, emergencyContact, type, joinDate, expiryDate);
     }
 
 }

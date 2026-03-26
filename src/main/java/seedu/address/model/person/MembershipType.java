@@ -12,7 +12,7 @@ public class MembershipType {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Membership types should only be 'monthly' or 'annual'";
-
+    public static final String VALIDATION_REGEX = "(?i)^(Monthly|Annual)$";
     public final String value;
 
     /**
@@ -23,14 +23,18 @@ public class MembershipType {
     public MembershipType(String type) {
         requireNonNull(type);
         checkArgument(isValidType(type), MESSAGE_CONSTRAINTS);
-        this.value = type.toLowerCase();
+        if (type.equalsIgnoreCase("annual")) {
+            this.value = "Annual";
+        } else {
+            this.value = "Monthly";
+        }
     }
 
     /**
      * Returns true if a given string is a valid name.
      */
     public static boolean isValidType(String test) {
-        return "Annual".equalsIgnoreCase(test) || "Monthly".equalsIgnoreCase(test);
+        return test.matches(VALIDATION_REGEX);
     }
 
 

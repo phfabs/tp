@@ -9,8 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class EmergencyContact {
     public static final String MESSAGE_CONSTRAINTS =
-            "Emergency contacts should only contain numbers, and it should be at least 8 digits long";
-    public static final String VALIDATION_REGEX = "\\d{8,}";
+            "Emergency contacts should only contain numbers, and it should be 8 digits long starting with 6,8 or 9";
+    public static final String VALIDATION_REGEX = "^[689]\\d{7}$";
     public final String value;
 
     /**

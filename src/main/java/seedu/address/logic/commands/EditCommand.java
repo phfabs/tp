@@ -26,6 +26,7 @@ import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.MemberId;
 import seedu.address.model.person.MemberStatus;
+import seedu.address.model.person.MembershipExpiryDate;
 import seedu.address.model.person.MembershipJoinDate;
 import seedu.address.model.person.MembershipType;
 import seedu.address.model.person.Name;
@@ -111,9 +112,10 @@ public class EditCommand extends Command {
                                                                         .orElse(personToEdit.getEmergencyContact());
         MembershipType updatedType = editPersonDescriptor.getType().orElse(personToEdit.getMembershipType());
         MembershipJoinDate updatedJoinDate = editPersonDescriptor.getJoinDate().orElse(personToEdit.getJoinDate());
+        MembershipExpiryDate expiryDate = personToEdit.getExpiryDate();
 
         return new Person(memberId, updatedName, updatedPhone, updatedGender, updatedDateOfBirth, updatedEmail,
-                updatedEmergencyContact, updatedType, updatedJoinDate);
+                updatedEmergencyContact, updatedType, updatedJoinDate, expiryDate);
     }
 
     @Override

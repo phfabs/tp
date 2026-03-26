@@ -12,6 +12,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.EmergencyContact;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.MemberId;
+import seedu.address.model.person.MembershipExpiryDate;
 import seedu.address.model.person.MembershipJoinDate;
 import seedu.address.model.person.MembershipType;
 import seedu.address.model.person.Name;
@@ -34,6 +35,7 @@ class JsonAdaptedPerson {
     private final String emergencyContact;
     private final String type;
     private final String joinDate;
+    private final String expiryDate;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -48,7 +50,8 @@ class JsonAdaptedPerson {
             @JsonProperty("email") String email,
             @JsonProperty("emergency contact") String emergencyContact,
             @JsonProperty("type") String type,
-            @JsonProperty("join date") String joinDate) {
+            @JsonProperty("join date") String joinDate,
+            @JsonProperty("expiry date") String expiryDate) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -58,6 +61,7 @@ class JsonAdaptedPerson {
         this.emergencyContact = emergencyContact;
         this.type = type;
         this.joinDate = joinDate;
+        this.expiryDate = expiryDate;
     }
 
     /**
@@ -73,6 +77,7 @@ class JsonAdaptedPerson {
         emergencyContact = source.getEmergencyContact().value;
         type = source.getMembershipType().toString();
         joinDate = source.getJoinDate().toString();
+        expiryDate = source.getExpiryDate().toString();
     }
 
     /**
@@ -154,8 +159,15 @@ class JsonAdaptedPerson {
         } else {
             modelJoinDate = new MembershipJoinDate();
         }
+
+        final MembershipExpiryDate modelExpiryDate;
+        if (expiryDate != null) {
+            modelExpiryDate = new MembershipExpiryDate(expiryDate);
+        } else {
+            modelExpiryDate = new MembershipExpiryDate(modelJoinDate.getDate(), modelType);
+        }
         return new Person(modelId, modelName, modelPhone, modelGender, modelDateOfBirth,
-                          modelEmail, modelEmergencyContact, modelType, modelJoinDate);
+                          modelEmail, modelEmergencyContact, modelType, modelJoinDate, modelExpiryDate);
     }
 
 }

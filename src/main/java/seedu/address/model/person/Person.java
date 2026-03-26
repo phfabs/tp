@@ -32,7 +32,7 @@ public class Person {
      */
     public Person(MemberId id, Name name, Phone phone, Gender gender,
                   DateOfBirth dateOfBirth, Email email, EmergencyContact emergencyContact,
-                  MembershipType type, MembershipJoinDate joinDate) {
+                  MembershipType type, MembershipJoinDate joinDate, MembershipExpiryDate expiryDate) {
         requireAllNonNull(id, name, phone, email, emergencyContact, type, joinDate);
         this.id = id;
         this.name = name;
@@ -43,7 +43,7 @@ public class Person {
         this.emergencyContact = emergencyContact;
         this.membershipType = type;
         this.joinDate = joinDate;
-        this.expiryDate = new MembershipExpiryDate(joinDate.getDate(), membershipType);
+        this.expiryDate = expiryDate;
         this.memberStatus = new MemberStatus(this.expiryDate.getExpiryDate());
     }
 

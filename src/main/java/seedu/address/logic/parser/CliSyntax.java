@@ -20,4 +20,5 @@ public class CliSyntax {
     public static final Prefix PREFIX_AGE_EQUAL = new Prefix("age=/");
     public static final Prefix PREFIX_JOIN_DATE_AFTER = new Prefix("j>/");
     public static final Prefix PREFIX_JOIN_DATE_BEFORE = new Prefix("j</");
+    public static final Prefix PREFIX_JOIN_DATE_EQUALS = new Prefix("j=/");
 }
