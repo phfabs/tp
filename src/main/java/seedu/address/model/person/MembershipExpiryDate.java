@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter;
  */
 public class MembershipExpiryDate {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    public final String value;
     public final LocalDate expiryDate;
     /**
      * represents the expiry date of member's membership
@@ -19,10 +18,8 @@ public class MembershipExpiryDate {
     public MembershipExpiryDate(LocalDate date, MembershipType type) {
         if (type.toString().equalsIgnoreCase("annual")) {
             this.expiryDate = date.plusYears(1);
-            this.value = date.plusYears(1).format(FORMATTER);
         } else {
             this.expiryDate = date.plusMonths(1);
-            this.value = date.plusMonths(1).format(FORMATTER);
         }
     }
 
@@ -30,7 +27,6 @@ public class MembershipExpiryDate {
      *
      */
     public MembershipExpiryDate(String date) {
-        this.value = date;
         this.expiryDate = LocalDate.parse(date, FORMATTER);
     }
 
@@ -38,7 +34,6 @@ public class MembershipExpiryDate {
      *
      */
     public MembershipExpiryDate(LocalDate date) {
-        this.value = date.format(FORMATTER);
         this.expiryDate = date;
     }
 
@@ -48,7 +43,7 @@ public class MembershipExpiryDate {
 
     @Override
     public String toString() {
-        return value;
+        return expiryDate.format(FORMATTER);
     }
     @Override
     public boolean equals(Object other) {
@@ -62,11 +57,11 @@ public class MembershipExpiryDate {
         }
 
         MembershipExpiryDate otherExpiryDate = (MembershipExpiryDate) other;
-        return this.value.equals(otherExpiryDate.value);
+        return this.expiryDate.equals(otherExpiryDate.expiryDate);
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return expiryDate.hashCode();
     }
 }

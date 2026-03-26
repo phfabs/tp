@@ -12,7 +12,6 @@ public class MembershipJoinDate {
             "Membership join date should be in the format DD-MM-YYYY and should be a valid date.";
     public static final String VALIDATION_REGEX = "^((0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-((19|20)\\d\\d))$";
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    public final String value;
     public final LocalDate currDate;
 
     /**
@@ -20,7 +19,6 @@ public class MembershipJoinDate {
      */
     public MembershipJoinDate() {
         this.currDate = LocalDate.now();
-        this.value = currDate.format(FORMATTER);
     }
     /**
      * Constructs a {@code MembershipJoinDate} object with the specified date string.
@@ -28,7 +26,6 @@ public class MembershipJoinDate {
      */
     public MembershipJoinDate(String date) {
         this.currDate = LocalDate.parse(date, FORMATTER);
-        this.value = currDate.format(FORMATTER);
     }
     public LocalDate getDate() {
         return currDate;
@@ -36,7 +33,7 @@ public class MembershipJoinDate {
 
     @Override
     public String toString() {
-        return value;
+        return currDate.format(FORMATTER);
     }
 
     /**
@@ -58,11 +55,11 @@ public class MembershipJoinDate {
         }
 
         MembershipJoinDate otherJoinDate = (MembershipJoinDate) other;
-        return this.value.equals(otherJoinDate.value);
+        return this.currDate.equals(otherJoinDate.currDate);
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return currDate.hashCode();
     }
 }
