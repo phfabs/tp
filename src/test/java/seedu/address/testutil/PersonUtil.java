@@ -4,7 +4,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEOFBIRTH;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMERGENCY_CONTACT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_JOIN_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBERSHIP_TYPE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -53,7 +52,6 @@ public class PersonUtil {
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getEmergencyContact().ifPresent(
                 contact -> sb.append(PREFIX_EMERGENCY_CONTACT).append(contact.value).append(" "));
-        descriptor.getJoinDate().ifPresent(join -> sb.append(PREFIX_JOIN_DATE).append(join.value).append(" "));
         descriptor.getType().ifPresent(
                 membershipType -> sb.append(PREFIX_MEMBERSHIP_TYPE).append(membershipType.value).append(" "));
         return sb.toString();

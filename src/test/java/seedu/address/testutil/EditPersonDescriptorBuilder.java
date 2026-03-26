@@ -36,7 +36,6 @@ public class EditPersonDescriptorBuilder {
         descriptor.setDateOfBirth(person.getDateOfBirth());
         descriptor.setEmail(person.getEmail());
         descriptor.setEmergencyContact(person.getEmergencyContact());
-        descriptor.setJoinDate(person.getJoinDate());
         descriptor.setMembershipType(person.getMembershipType());
     }
 

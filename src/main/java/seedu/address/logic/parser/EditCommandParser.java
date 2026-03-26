@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATEOFBIRTH;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMERGENCY_CONTACT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_JOIN_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBERSHIP_TYPE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -30,7 +29,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_GENDER, PREFIX_DATEOFBIRTH,
-                        PREFIX_MEMBERSHIP_TYPE, PREFIX_EMAIL, PREFIX_EMERGENCY_CONTACT, PREFIX_JOIN_DATE);
+                        PREFIX_MEMBERSHIP_TYPE, PREFIX_EMAIL, PREFIX_EMERGENCY_CONTACT);
 
         Index index;
 
@@ -69,10 +68,6 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setMembershipType(
                     ParserUtil.parseType(argMultimap.getValue(PREFIX_MEMBERSHIP_TYPE).get()));
         }
-        if (argMultimap.getValue(PREFIX_JOIN_DATE).isPresent()) {
-            editPersonDescriptor.setJoinDate(ParserUtil.parseJoinDate(argMultimap.getValue(PREFIX_JOIN_DATE).get()));
-        }
-
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
