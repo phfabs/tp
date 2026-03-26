@@ -26,7 +26,7 @@ FitDesk is a **desktop app for front-desk receptionists** at small-to-medium pri
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window. Use the `Up` and `Down` arrow keys (when the command box is focused) to cycle through previously entered commands.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
