@@ -11,6 +11,8 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.lang.reflect.Field;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
@@ -102,6 +104,34 @@ public class DeleteCommandTest {
 
         assertThrows(CommandException.class,
                 "Unable to undo delete: person already exists.", () -> deleteCommand.undo(model));
+    }
+
+    @Test
+    public void undo_personAlreadyRestored_throwsCommandException() throws Exception {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Person personToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+        deleteCommand.execute(model);
+        model.addPerson(personToDelete);
+
+        assertThrows(CommandException.class,
+                "Unable to undo delete: person already exists.", () -> deleteCommand.undo(model));
+    }
+
+    @Test
+    public void undo_missingPreviousState_throwsCommandException() throws Exception {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+
+        deleteCommand.execute(model);
+
+        Field previousAddressBookField = DeleteCommand.class.getDeclaredField("previousAddressBook");
+        previousAddressBookField.setAccessible(true);
+        previousAddressBookField.set(deleteCommand, null);
+
+        assertThrows(CommandException.class,
+                "Unable to undo delete: no previous state stored.", () -> deleteCommand.undo(model));
     }
 
     @Test

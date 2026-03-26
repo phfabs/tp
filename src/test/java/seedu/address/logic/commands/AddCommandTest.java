@@ -81,6 +81,18 @@ public class AddCommandTest {
     }
 
     @Test
+    public void undo_personMissingAfterExecute_throwsCommandException() throws Exception {
+        Model model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs());
+        Person newPerson = new PersonBuilder().withName("Undo Add Missing").withEmail("undoadd2@example.com").build();
+        AddCommand addCommand = new AddCommand(newPerson);
+
+        addCommand.execute(model);
+        model.deletePerson(newPerson);
+
+        assertThrows(CommandException.class, "Unable to undo add: person not found.", () -> addCommand.undo(model));
+    }
+
+    @Test
     public void equals() {
         Person alice = new PersonBuilder().withName("Alice").build();
         Person bob = new PersonBuilder().withName("Bob").build();

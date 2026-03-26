@@ -15,6 +15,8 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.lang.reflect.Field;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
@@ -184,6 +186,22 @@ public class EditCommandTest {
 
         assertThrows(CommandException.class,
                 "Unable to undo edit: edited person not found.", () -> editCommand.undo(model));
+    }
+
+    @Test
+    public void undo_missingEditedPersonReference_throwsCommandException() throws Exception {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName("Undo Edit").build();
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
+
+        editCommand.execute(model);
+
+        Field editedPersonField = EditCommand.class.getDeclaredField("editedPerson");
+        editedPersonField.setAccessible(true);
+        editedPersonField.set(editCommand, null);
+
+        assertThrows(CommandException.class,
+                "Unable to undo edit: missing original data.", () -> editCommand.undo(model));
     }
 
     @Test
