@@ -48,7 +48,9 @@ public class Messages {
                 .append("; Email: ")
                 .append(person.getEmail())
                 .append("; Emergency Contact: ")
-                .append(person.getEmergencyContact());
+                .append(person.getEmergencyContact())
+                .append("; Remarks: ")
+                .append(person.getRemark());
         return builder.toString();
     }
 
