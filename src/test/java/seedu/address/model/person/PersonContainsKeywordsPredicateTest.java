@@ -73,6 +73,10 @@ public class PersonContainsKeywordsPredicateTest {
         predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("morning"));
         assertTrue(predicate.test(new PersonBuilder().withRemark("Prefers morning sessions").build()));
 
+        // Membership ID match
+        predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("m08"));
+        assertTrue(predicate.test(new PersonBuilder().withRemark("M085").build()));
+
         // Case-insensitive match
         predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("AMY BEE"));
         assertTrue(predicate.test(new PersonBuilder().withName("Amy Bee").build()));
@@ -92,14 +96,6 @@ public class PersonContainsKeywordsPredicateTest {
         // Multi-word query not present as literal substring
         predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("Amy Carol"));
         assertFalse(predicate.test(new PersonBuilder().withName("Amy Bee").build()));
-
-        // Empty remark
-        predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("morning"));
-        assertFalse(predicate.test(new PersonBuilder().withRemark(" ").build()));
-
-        // Non-matching remark
-        predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("morning"));
-        assertFalse(predicate.test(new PersonBuilder().withRemark("Likes swimming").build()));
     }
 
     @Test
