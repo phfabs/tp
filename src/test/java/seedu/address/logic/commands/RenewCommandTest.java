@@ -15,6 +15,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.lang.reflect.Field;
+import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
 
@@ -38,29 +39,20 @@ public class RenewCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_typeFieldSpecifiedUnfilteredList_success() {
-        Person renewedPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        RenewPersonDescriptor descriptor = new RenewPersonDescriptorBuilder(renewedPerson).build();
-        RenewCommand renewCommand = new RenewCommand(INDEX_FIRST_PERSON, descriptor);
-
-        String expectedMessage = String.format(
-                RenewCommand.MESSAGE_RENEW_PERSON_SUCCESS, Messages.format(renewedPerson));
-
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(model.getFilteredPersonList().get(0), renewedPerson);
-
-        assertCommandSuccess(renewCommand, model, expectedMessage, expectedModel);
-    }
-
-    @Test
-    public void execute_noTypeSpecifiedUnfilteredList_success() {
+    public void execute_unfilteredList_success() {
         RenewCommand renewCommand = new RenewCommand(INDEX_FIRST_PERSON, new RenewPersonDescriptor());
-        Person renewedPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person person = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+
+        String newExpiry = (person.getExpiryDate().getExpiryDate().plusYears(1))
+                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+        Person expectedPerson = new PersonBuilder(person).withExpiryDate(newExpiry).build();
 
         String expectedMessage = String.format(
-                RenewCommand.MESSAGE_RENEW_PERSON_SUCCESS, Messages.format(renewedPerson));
+                RenewCommand.MESSAGE_RENEW_PERSON_SUCCESS, Messages.format(expectedPerson));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setPerson(person, expectedPerson);
 
         assertCommandSuccess(renewCommand, model, expectedMessage, expectedModel);
     }
@@ -70,15 +62,20 @@ public class RenewCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person personInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person renewedPerson = new PersonBuilder(personInFilteredList).withType(VALID_TYPE_BOB).build();
+        Person person = new PersonBuilder(personInFilteredList).build();
         RenewCommand renewCommand = new RenewCommand(INDEX_FIRST_PERSON,
-                new RenewPersonDescriptorBuilder().withType(VALID_TYPE_BOB).build());
+                new RenewPersonDescriptorBuilder().build());
+
+        String newExpiry = (person.getExpiryDate().getExpiryDate().plusYears(1))
+                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+        Person expectedPerson = new PersonBuilder(person).withExpiryDate(newExpiry).build();
 
         String expectedMessage = String.format(
-                RenewCommand.MESSAGE_RENEW_PERSON_SUCCESS, Messages.format(renewedPerson));
+                RenewCommand.MESSAGE_RENEW_PERSON_SUCCESS, Messages.format(expectedPerson));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(model.getFilteredPersonList().get(0), renewedPerson);
+        expectedModel.setPerson(model.getFilteredPersonList().get(0), expectedPerson);
 
         assertCommandSuccess(renewCommand, model, expectedMessage, expectedModel);
     }

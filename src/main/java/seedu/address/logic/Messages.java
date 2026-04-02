@@ -49,6 +49,12 @@ public class Messages {
                 .append(person.getEmail())
                 .append("; Emergency Contact: ")
                 .append(person.getEmergencyContact())
+                .append("; Join Date: ")
+                .append(person.getJoinDate())
+                .append("; Expiry Date: ")
+                .append(person.getExpiryDate())
+                .append("; Status: ")
+                .append(person.getMemberStatus())
                 .append("; Remarks: ")
                 .append(person.getRemark());
         return builder.toString();

@@ -34,6 +34,8 @@ public class TypicalPersons {
             .withPhone("94351253")
             .withGender("F")
             .withDateOfBirth("01-01-1990")
+            .withJoinDate("11-03-2026")
+            .withExpiryDate("11-03-2027")
             .withType("Annual")
             .build();
     public static final Person BENSON = new PersonBuilder()
