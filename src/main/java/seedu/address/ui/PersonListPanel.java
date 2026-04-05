@@ -60,6 +60,7 @@ public class PersonListPanel extends UiPart<Region> {
      * @param person the person to select
      */
     public void selectPerson(Person person) {
+        personListView.getSelectionModel().clearSelection();
         personListView.getSelectionModel().select(person);
         personListView.scrollTo(person);
     }

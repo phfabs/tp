@@ -116,7 +116,8 @@ public class EditCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         originalPerson = personToEdit;
         editedPerson = updatedPerson;
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(updatedPerson)));
+        return new CommandResult(
+                String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(updatedPerson)), editedPerson);
     }
 
     private static String getDuplicateMessage(Person personToEdit, Person updatedPerson, Model model) {
