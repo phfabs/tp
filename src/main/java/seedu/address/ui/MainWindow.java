@@ -8,7 +8,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
@@ -33,6 +32,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private MemberDetails currMemberDetails;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private DashBoard dashBoard;
@@ -125,18 +125,14 @@ public class MainWindow extends UiPart<Stage> {
                 .selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
-                        memberDetailsPlaceholder.getChildren().setAll(
-                                new MemberDetails(newValue).getRoot());
-                    } else {
-                        memberDetailsPlaceholder.getChildren().setAll(dashBoard.getRoot());
+                        currMemberDetails = new MemberDetails(newValue);
+                        currMemberDetails.getRoot().setOnMouseClicked(e -> {
+                            personListPanel.getListView().getSelectionModel().clearSelection();
+                            memberDetailsPlaceholder.getChildren().setAll(dashBoard.getRoot());
+                        });
+                        memberDetailsPlaceholder.getChildren().setAll(currMemberDetails.getRoot());
                     }
                 });
-        primaryStage.addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
-            if (personListPanel.getListView().getSelectionModel().getSelectedItem() != null) {
-                personListPanel.getListView().getSelectionModel().clearSelection();
-                memberDetailsPlaceholder.getChildren().setAll(dashBoard.getRoot());
-            }
-        });
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
