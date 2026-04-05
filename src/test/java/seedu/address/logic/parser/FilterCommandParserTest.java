@@ -16,12 +16,15 @@ import seedu.address.model.person.AgeLessThanPredicate;
 import seedu.address.model.person.ExpiryDateAfterPredicate;
 import seedu.address.model.person.ExpiryDateBeforePredicate;
 import seedu.address.model.person.ExpiryDateEqualsPredicate;
+import seedu.address.model.person.Gender;
 import seedu.address.model.person.GenderMatchesPredicate;
 import seedu.address.model.person.JoinDateAfterPredicate;
 import seedu.address.model.person.JoinDateBeforePredicate;
 import seedu.address.model.person.JoinDateEqualsPredicate;
+import seedu.address.model.person.MemberStatus;
 import seedu.address.model.person.MembershipExpiryDate;
 import seedu.address.model.person.MembershipJoinDate;
+import seedu.address.model.person.MembershipType;
 import seedu.address.model.person.MembershipTypeMatchesPredicate;
 import seedu.address.model.person.StatusMatchesPredicate;
 
@@ -214,5 +217,20 @@ public class FilterCommandParserTest {
     @Test
     public void parse_emptyArg_throwsParseException() {
         assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void pare_invalidMemberStatus_throwsParseException() {
+        assertParseFailure(parser, " s/inv", MemberStatus.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_invalidMembershipType_throwsParseException() {
+        assertParseFailure(parser, " m/Gold", MembershipType.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_invalidGender_throwsParseException() {
+        assertParseFailure(parser, " g/k", Gender.MESSAGE_CONSTRAINTS);
     }
 }

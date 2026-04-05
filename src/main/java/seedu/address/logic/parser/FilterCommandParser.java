@@ -28,10 +28,15 @@ import seedu.address.model.person.AgeLessThanPredicate;
 import seedu.address.model.person.ExpiryDateAfterPredicate;
 import seedu.address.model.person.ExpiryDateBeforePredicate;
 import seedu.address.model.person.ExpiryDateEqualsPredicate;
+import seedu.address.model.person.Gender;
 import seedu.address.model.person.GenderMatchesPredicate;
 import seedu.address.model.person.JoinDateAfterPredicate;
 import seedu.address.model.person.JoinDateBeforePredicate;
 import seedu.address.model.person.JoinDateEqualsPredicate;
+import seedu.address.model.person.MemberStatus;
+import seedu.address.model.person.MembershipExpiryDate;
+import seedu.address.model.person.MembershipJoinDate;
+import seedu.address.model.person.MembershipType;
 import seedu.address.model.person.MembershipTypeMatchesPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.StatusMatchesPredicate;
@@ -72,14 +77,23 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             if (status.isEmpty()) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
             }
+
+            if (!MemberStatus.isValidStatus(status)) {
+                throw new ParseException(MemberStatus.MESSAGE_CONSTRAINTS);
+            }
             predicates.add(new StatusMatchesPredicate(status));
         }
 
         // Filter based on gender
         if (argMultimap.getValue(PREFIX_GENDER).isPresent()) {
             String gender = argMultimap.getValue(PREFIX_GENDER).get().trim();
+
             if (gender.isEmpty()) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+            }
+
+            if (!Gender.isValidGender(gender)) {
+                throw new ParseException((Gender.MESSAGE_CONSTRAINTS));
             }
             predicates.add(new GenderMatchesPredicate(gender));
         }
@@ -89,6 +103,10 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             String membershipType = argMultimap.getValue(PREFIX_MEMBERSHIP_TYPE).get().trim();
             if (membershipType.isEmpty()) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+            }
+
+            if (!MembershipType.isValidType(membershipType)) {
+                throw new ParseException(MembershipType.MESSAGE_CONSTRAINTS);
             }
             predicates.add(new MembershipTypeMatchesPredicate(membershipType));
         }
@@ -115,6 +133,10 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             if (joinDate.isEmpty()) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
             }
+
+            if (!MembershipJoinDate.isValidJoinDate(joinDate)) {
+                throw new ParseException(MembershipJoinDate.MESSAGE_CONSTRAINTS);
+            }
             predicates.add(new JoinDateAfterPredicate(ParserUtil.parseJoinDate(joinDate).getDate()));
         }
 
@@ -122,6 +144,10 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             String joinDate = argMultimap.getValue(PREFIX_JOIN_DATE_BEFORE).get().trim();
             if (joinDate.isEmpty()) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+            }
+
+            if (!MembershipJoinDate.isValidJoinDate(joinDate)) {
+                throw new ParseException(MembershipJoinDate.MESSAGE_CONSTRAINTS);
             }
             predicates.add(new JoinDateBeforePredicate(ParserUtil.parseJoinDate(joinDate).getDate()));
         }
@@ -131,6 +157,11 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             if (joinDate.isEmpty()) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
             }
+
+            if (!MembershipJoinDate.isValidJoinDate(joinDate)) {
+                throw new ParseException(MembershipJoinDate.MESSAGE_CONSTRAINTS);
+            }
+
             predicates.add(new JoinDateEqualsPredicate(ParserUtil.parseJoinDate(joinDate).getDate()));
         }
 
@@ -140,6 +171,11 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             if (expiryDate.isEmpty()) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
             }
+
+            if (!MembershipExpiryDate.isValidExpiryDate(expiryDate)) {
+                throw new ParseException(MembershipExpiryDate.MESSAGE_CONSTRAINTS);
+            }
+
             predicates.add(new ExpiryDateAfterPredicate(ParserUtil.parseExpiryDate(expiryDate).getExpiryDate()));
         }
 
@@ -148,6 +184,11 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             if (expiryDate.isEmpty()) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
             }
+
+            if (!MembershipExpiryDate.isValidExpiryDate(expiryDate)) {
+                throw new ParseException(MembershipExpiryDate.MESSAGE_CONSTRAINTS);
+            }
+
             predicates.add(new ExpiryDateBeforePredicate(ParserUtil.parseExpiryDate(expiryDate).getExpiryDate()));
         }
 
@@ -155,6 +196,10 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             String expiryDate = argMultimap.getValue(PREFIX_EXPIRY_DATE_EQUALS).get().trim();
             if (expiryDate.isEmpty()) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+            }
+
+            if (!MembershipExpiryDate.isValidExpiryDate(expiryDate)) {
+                throw new ParseException(MembershipExpiryDate.MESSAGE_CONSTRAINTS);
             }
             predicates.add(new ExpiryDateEqualsPredicate(ParserUtil.parseExpiryDate(expiryDate).getExpiryDate()));
         }
