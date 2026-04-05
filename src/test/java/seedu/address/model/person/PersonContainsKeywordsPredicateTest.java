@@ -53,10 +53,6 @@ public class PersonContainsKeywordsPredicateTest {
         predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("amy@gmail"));
         assertTrue(predicate.test(new PersonBuilder().withEmail("amy@gmail.com").build()));
 
-        // Gender match
-        predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("F"));
-        assertTrue(predicate.test(new PersonBuilder().withGender("F").build()));
-
         // Emergency contact match
         predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("9123"));
         assertTrue(predicate.test(new PersonBuilder().withEmergencyContact("91236811").build()));
@@ -64,10 +60,6 @@ public class PersonContainsKeywordsPredicateTest {
         // Membership type match
         predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("annual"));
         assertTrue(predicate.test(new PersonBuilder().withType("annual").build()));
-
-        // Membership status match
-        predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("valid"));
-        assertTrue(predicate.test(new PersonBuilder().build()));
 
         // Membership remark match
         predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("morning"));

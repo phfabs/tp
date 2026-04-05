@@ -9,16 +9,19 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
+
+
 /**
- * Finds and lists all persons in address book whose any field contains the query as a literal substring.
+ * Finds and lists all persons in address book whose whose specifc fields contain the query as a literal substring.
  * Matching is case-insensitive.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all members whose any field contains "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all members whose specific field contains "
             + "the specified query as a literal substring (case-insensitive).\n"
+            + "Supported fields: name, phone, email, emergency contact, and membership type.\n"
             + "Parameters: QUERY\n"
             + "Example: " + COMMAND_WORD + " john doe";
 
