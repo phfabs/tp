@@ -28,12 +28,16 @@ public class DashboardStats {
                         && (p.getExpiryDate().getExpiryDate().isAfter(LocalDate.now()))
         ).count();
     }
+    /**
+     * Counts members whose join date falls in the current ISO calendar week (Monday–Sunday, inclusive).
+     */
     public static int getNewMembers(ObservableList<Person> list) {
-        LocalDate prevSun = LocalDate.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
-        LocalDate nextMon = LocalDate.now().with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY));
+        LocalDate today = LocalDate.now();
+        LocalDate startOfWeek = today.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+        LocalDate endOfWeek = today.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
         return (int) list.stream().filter(
-                p -> (p.getJoinDate().getDate().isAfter(prevSun))
-                        && (p.getJoinDate().getDate().isBefore(nextMon))
+                p -> !p.getJoinDate().getDate().isBefore(startOfWeek)
+                        && !p.getJoinDate().getDate().isAfter(endOfWeek)
         ).count();
     }
 }

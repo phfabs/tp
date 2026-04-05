@@ -2,10 +2,8 @@ package seedu.address.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAdjusters;
 
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +33,6 @@ public class DashboardTest {
     @Test
     public void getNewMember_thisWeek_returnsCorrectCount() {
         ObservableList<Person> list = FXCollections.observableArrayList();
-        LocalDate nextMon = LocalDate.now().with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY));
         String dayThisWeek = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         list.add(new PersonBuilder().withJoinDate(dayThisWeek).build());
         assertEquals(1, DashboardStats.getNewMembers(list));
