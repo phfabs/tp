@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import java.util.function.Predicate;
 
@@ -9,18 +10,21 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
+
+
 /**
- * Finds and lists all persons in address book whose any field contains the query as a literal substring.
+ * Finds and lists all persons in address book whose specified field contains any of the argument keywords.
  * Matching is case-insensitive.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all members whose any field contains "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all members whose specified field contains "
             + "the specified query as a literal substring (case-insensitive).\n"
             + "Parameters: QUERY\n"
-            + "Example: " + COMMAND_WORD + " john doe";
+            + "Example: " + COMMAND_WORD
+            + PREFIX_NAME + " john doe";
 
     private final Predicate<Person> predicate;
 
