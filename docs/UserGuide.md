@@ -88,7 +88,9 @@ Refer to the [**Features**](#features) section below for full details of each co
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## Commands
+
+FitDesk supports the following commands. Click on a command to learn more.
 
 <box type="info" seamless>
 
@@ -112,6 +114,8 @@ Refer to the [**Features**](#features) section below for full details of each co
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
+
+## Basic Commands
 
 ### Viewing help : `help`
 
@@ -194,6 +198,8 @@ Example:
   The 2nd member is deleted from the list
 
 
+## Search & Filter
+
 ### Locating members by keyword: `find`
 
 Finds members whose fields contain the search query as a substring.
@@ -224,6 +230,8 @@ Example:
 ![result for 'filter s/valid'](images/screenshots/filter_1.png)
 Members with valid memberships are listed
 
+
+## Member Management
 
 ### Viewing the details of a person : `details`
 
@@ -288,6 +296,8 @@ The 4th member's membership type is changed from `Annual` to `Monthly`, so the e
 ![renew failed](images/screenshots/renew_5.png)
 The 1st member is failed to be renewed since its membership has expired
 
+
+## Utility
 
 ### Clearing all entries : `clear`
 
