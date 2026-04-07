@@ -48,7 +48,7 @@ FitDesk is a **desktop app for front-desk receptionists** at small-to-medium pri
 
 A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
-   ![Ui](images/Ui.png)
+![Ui](images/Ui.png)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -115,11 +115,14 @@ Refer to the [**Features**](#features) section below for full details of each co
 
 ### Viewing help : `help`
 
-Shows a message explaining how to access the help page.
+Shows a message explaining how to access the help page through a pop-up window.
 
 Format: `help`
 
+Example:
+* `help`
 ![help message](images/screenshots/help_1.png)
+Help message is shown 
 
 
 ### Adding a member: `add`
@@ -152,6 +155,7 @@ Format: `list`
 Example:
 * `list`
 ![members listed](images/screenshots/list_1.png)
+All members are listed
 
 
 ### Editing a person : `edit`
@@ -168,7 +172,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [g/GENDER] [d/DATE_OF_BIRTH] [m/ME
 Example:
 *  `edit 7 p/91234567 e/johndoe@example.com`
 ![result for 'edit 1 p/91234567 e/johndoe@example.com'](images/screenshots/edit_1.png)
-The phone number and email address of the 7th member are edited to be `91234567` and `johndoe@example.com` respectively.
+The phone number and email address of the 7th member are edited to be `91234567` and `johndoe@example.com` respectively
 
 
 ### Locating members by keyword: `find`
@@ -184,9 +188,9 @@ Format: `find QUERY`
   e.g. `find john doe` will only return members whose field contains `"john doe"`, not members with just `john` or just `doe`
 
 Examples:
-* `find john doe` returns members whose name (or other field) contains `john doe`<br>
+* `find john doe`
 ![result for 'find john doe'](images/screenshots/find_1.png)
-The two members' names contain `john doe`
+Members whose name (or other field) contains `john doe` are listed
 * `find 9123` returns members whose phone number or another field contains `9123`
 
 
@@ -196,9 +200,11 @@ Filters member list and displays members who have fields matching the given attr
 
 Format: `filter [s/STATUS] [g/GENDER] [m/MEMBERSHIP_TYPE] [age>/AGE] [age</AGE] [age=/AGE] [j>/DATE] [j</DATE] [exp>/DATE] [exp</DATE] [exp=/DATE]`
 
-Examples:
-* `filter s/valid` returns list of members with valid memberships
-  ![result for 'filter s/valid'](images/screenshots/filterResult.png)
+Example:
+* `filter s/valid`
+![result for 'filter s/valid'](images/screenshots/filter_1.png)
+Members with valid memberships are listed
+
 
 ### Deleting a member : `delete`
 
