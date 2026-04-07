@@ -116,7 +116,7 @@ Refer to the [**Features**](#features) section below for full details of each co
 
 Shows a message explaining how to access the help page.
 
-![help message](images/screenshots/helpMessage.png)
+![help message](images/screenshots/help.png)
 
 Format: `help`
 
