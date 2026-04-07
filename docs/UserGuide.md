@@ -116,7 +116,7 @@ Refer to the [**Features**](#features) section below for full details of each co
 
 Shows a message explaining how to access the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/screenshots/helpMessage.png)
 
 Format: `help`
 
@@ -139,11 +139,11 @@ Format: `add n/NAME p/PHONE_NUMBER g/GENDER d/DATE_OF_BIRTH m/MEMBERSHIP_TYPE e/
 Examples:
 * `add n/John Doe p/98765432 g/M d/19-01-2004 m/annual e/johnd@example.com ec/98723347`
 
-![add new member](images/add_member.png)
+![add new member](images/screenshots/add_member.png)
 
 A new member `John Doe` is added to the member list
 
-![added member](images/added.png)
+![added member](images/screenshots/added.png)
 
 * `add n/Betsy Crowe m/monthly ec/93349011 e/betsycrowe@example.com g/F d/28-01-2002 p/91234567`
 
@@ -154,7 +154,7 @@ Shows a list of all members in the list.
 Format: `list`
 
 Example:
-![list](images/list.png)
+![list](images/screenshots/list.png)
 
 ### Editing a person : `edit`
 
@@ -169,9 +169,9 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [g/GENDER] [d/DATE_OF_BIRTH] [m/ME
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st member to be `91234567` and `johndoe@example.com` respectively.
-  ![result for 'edit 1 p/91234567 e/johndoe@example.com'](images/Edit_Example_1.png)
+  ![result for 'edit 1 p/91234567 e/johndoe@example.com'](images/screenshots/Edit_Example_1.png)
 *  `edit 2 n/Betsy Crower m/annual` Edits the name and membership type of the 2nd member to be `Betsy Crower`and `annual` respectively.
-  ![result for 'edit 2 n/Betsy Crower m/annual'](images/Edit_Example_2.png)
+  ![result for 'edit 2 n/Betsy Crower m/annual'](images/screenshots/Edit_Example_2.png)
 
 ### Locating members by keyword: `find`
 
@@ -188,7 +188,7 @@ Format: `find QUERY`
 Examples:
 * `find John` returns members with `John` in any field
 * `find john doe` returns members whose name (or other field) contains `"john doe"`<br>
-  ![result for 'find john doe'](images/findResult.png)
+  ![result for 'find john doe'](images/screenshots/findResult.png)
 * `find 9123` returns members whose phone number or other field contains `9123`
 * `find annual` returns members with `annual` membership type
 
@@ -200,7 +200,7 @@ Format: `filter [s/STATUS] [g/GENDER] [m/MEMBERSHIP_TYPE] [age>/AGE] [age</AGE] 
 
 Examples:
 * `filter s/valid` returns list of members with valid memberships
-  ![result for 'filter s/valid'](images/filterResult.png)
+  ![result for 'filter s/valid'](images/screenshots/filterResult.png)
 
 ### Deleting a member : `delete`
 
@@ -216,11 +216,11 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
   1. `list`
   
-     ![list](images/list_2.png)
+     ![list](images/screenshots/list_2.png)
   
   2. `delete 2`
   
-  ![deleted member](images/delete_2.png)
+  ![deleted member](images/screenshots/delete_2.png)
   
 * `find Alex` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
@@ -252,7 +252,7 @@ Format: `remark INDEX r/[REMARK]`
 
 Examples:
 * `remark 1 r/Likes to swim.` adds the remark `Likes to swim.` to the 1st member.
-  ![remark added](images/remark.png)
+  ![remark added](images/screenshots/remark.png)
 * `remark 2 r/` removes the remark from the 2nd member.
 
 ### Viewing the details of a person : `details`
@@ -269,15 +269,15 @@ Examples:
 * `list` followed by `details 1` shows the details of the 1st member in the address book.
   1. `list`
     
-        ![list of members](images/details_list1.png)
+        ![list of members](images/screenshots/details_list1.png)
   
   2. `details 1`
   
-        ![details of 1st member](images/details_1.png)
+        ![details of 1st member](images/screenshots/details_1.png)
 
 * `find David` followed by `details 1` shows the details of the 1st member in the results of the `find` command.
 
-  ![details of 1st member in find results](images/details_2.png)
+  ![details of 1st member in find results](images/screenshots/details_2.png)
 
 
 ### Clearing all entries : `clear`
@@ -295,9 +295,9 @@ Format: `undo`
 Example:
 * `undo`
 
-  ![before undo](images/undo_before.png)
+  ![before undo](images/screenshots/undo_before.png)
 
-  ![after undo](images/undo_after.png)
+  ![after undo](images/screenshots/undo_after.png)
 
 ### Navigating command history
 
@@ -308,9 +308,9 @@ Allows you to quickly re-use previously entered commands using the arrow keys in
 * The cursor will be placed at the end of the text after navigating.
 * Pressing `Down` past the most recent command clears the command box.
 
-![navigating to previous command](images/command_history_down.png)
+![navigating to previous command](images/screenshots/command_history_down.png)
 
-![navigating to next command](images/command_history_up.png)
+![navigating to next command](images/screenshots/command_history_up.png)
 
 ### Exiting the program : `exit`
 
