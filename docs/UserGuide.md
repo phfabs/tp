@@ -116,7 +116,7 @@ Refer to the [**Features**](#features) section below for full details of each co
 
 Shows a message explaining how to access the help page.
 
-![help message](images/screenshots/help.png)
+![help message](images/screenshots/help_1.png)
 
 Format: `help`
 
@@ -138,14 +138,8 @@ Format: `add n/NAME p/PHONE_NUMBER g/GENDER d/DATE_OF_BIRTH m/MEMBERSHIP_TYPE e/
 
 Examples:
 * `add n/John Doe p/98765432 g/M d/19-01-2004 m/annual e/johnd@example.com ec/98723347`
-
-![add new member](images/screenshots/add_member.png)
-
+![added member](images/screenshots/add_1.png)
 A new member `John Doe` is added to the member list
-
-![added member](images/screenshots/added.png)
-
-* `add n/Betsy Crowe m/monthly ec/93349011 e/betsycrowe@example.com g/F d/28-01-2002 p/91234567`
 
 ### Listing all persons : `list`
 
