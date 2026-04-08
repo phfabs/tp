@@ -22,7 +22,7 @@ public class Gender {
     public Gender(String gender) {
         requireNonNull(gender);
         checkArgument(isValidGender(gender), MESSAGE_CONSTRAINTS);
-        this.gender = gender;
+        this.gender = gender.toUpperCase();
     }
 
     /**
