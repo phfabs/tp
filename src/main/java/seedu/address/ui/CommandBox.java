@@ -1,9 +1,15 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.IntSupplier;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
+import seedu.address.logic.TabCompleter;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -18,6 +24,9 @@ public class CommandBox extends UiPart<Region> {
     private final CommandHistory commandHistory = new CommandHistory();
 
     private final CommandExecutor commandExecutor;
+    private final TabCompleter tabCompleter;
+    private List<String> completionCandidates = new ArrayList<>();
+    private int completionIndex = -1;
 
     @FXML
     private TextField commandTextField;
@@ -25,21 +34,32 @@ public class CommandBox extends UiPart<Region> {
     /**
      * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
      */
-    public CommandBox(CommandExecutor commandExecutor) {
+    public CommandBox(CommandExecutor commandExecutor, IntSupplier listSizeSupplier) {
         super(FXML);
         this.commandExecutor = commandExecutor;
+        this.tabCompleter = new TabCompleter(listSizeSupplier);
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
 
-        commandTextField.setOnKeyPressed(event -> {
+        // Use an event filter so Tab is intercepted before JavaFX's focus traversal system.
+        commandTextField.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             switch (event.getCode()) {
+            case TAB:
+                handleTabPressed();
+                event.consume();
+                break;
             case UP:
+                resetCompletion();
                 showPreviousCommand();
+                event.consume();
                 break;
             case DOWN:
+                resetCompletion();
                 showNextCommand();
+                event.consume();
                 break;
             default:
+                resetCompletion();
                 break;
             }
         });
@@ -109,6 +129,36 @@ public class CommandBox extends UiPart<Region> {
          * @see seedu.address.logic.Logic#execute(String)
          */
         CommandResult execute(String commandText) throws CommandException, ParseException;
+    }
+
+    /**
+     * Handles Tab key press by cycling through completions for the current input.
+     */
+    private void handleTabPressed() {
+        String currentText = commandTextField.getText();
+
+        if (completionCandidates.isEmpty()) {
+            List<String> candidates = tabCompleter.getCompletions(currentText);
+            candidates.removeIf(c -> c.equals(currentText));
+            if (candidates.isEmpty()) {
+                return;
+            }
+            completionCandidates = candidates;
+            completionIndex = 0;
+        } else {
+            completionIndex = (completionIndex + 1) % completionCandidates.size();
+        }
+        String completion = completionCandidates.get(completionIndex);
+        commandTextField.setText(completion);
+        commandTextField.positionCaret(completion.length());
+    }
+
+    /**
+     * Clears the current completion cycle state.
+     */
+    private void resetCompletion() {
+        completionCandidates = new ArrayList<>();
+        completionIndex = -1;
     }
 
     /**

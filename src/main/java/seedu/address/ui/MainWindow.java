@@ -151,7 +151,7 @@ public class MainWindow extends UiPart<Stage> {
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        commandBox = new CommandBox(this::executeCommand);
+        commandBox = new CommandBox(this::executeCommand, () -> logic.getFilteredPersonList().size());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
         getRoot().addEventFilter(KeyEvent.KEY_TYPED, event -> {
