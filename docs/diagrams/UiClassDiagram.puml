@@ -15,6 +15,7 @@ Class PersonListPanel
 Class PersonCard
 Class StatusBarFooter
 Class CommandBox
+Class CommandHistory
 Class DashBoard
 Class MemberDetails
 }
@@ -25,6 +26,7 @@ Class HiddenModel #FFFFFF
 
 package Logic <<Rectangle>> {
 Class HiddenLogic #FFFFFF
+Class TabCompleter
 }
 
 Class HiddenOutside #FFFFFF
@@ -33,6 +35,8 @@ HiddenOutside ..> Ui
 UiManager .left.|> Ui
 UiManager -down-> "1" MainWindow
 MainWindow *-down->  "1" CommandBox
+CommandBox *-down-> "1" CommandHistory
+CommandBox ..> "1" TabCompleter
 MainWindow *-down-> "1" ResultDisplay
 MainWindow *-down-> "1" PersonListPanel
 MainWindow *-down-> "1" DashBoard
