@@ -139,7 +139,7 @@ public class RenewCommandTest {
         RenewCommand renewCommand = new RenewCommand(INDEX_FIRST_PERSON, descriptor);
 
         assertThrows(CommandException.class,
-                "Unable to undo renew: missing original data.", () -> renewCommand.undo(model));
+                "Cannot undo renew: original data is missing.", () -> renewCommand.undo(model));
     }
 
     @Test
@@ -152,8 +152,10 @@ public class RenewCommandTest {
         Person renewedPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         model.deletePerson(renewedPerson);
 
-        assertThrows(CommandException.class,
-                "Unable to undo renew: renewed member not found.", () -> renewCommand.undo(model));
+        String expectedMessage = "Cannot undo renew: the renewed member is no longer in the address book.";
+        assertThrows(
+                CommandException.class,
+                expectedMessage, () -> renewCommand.undo(model));
     }
 
     @Test
@@ -169,7 +171,7 @@ public class RenewCommandTest {
         editedPersonField.set(renewCommand, null);
 
         assertThrows(CommandException.class,
-                "Unable to undo renew: missing original data.", () -> renewCommand.undo(model));
+                "Cannot undo renew: original data is missing.", () -> renewCommand.undo(model));
     }
 
     @Test

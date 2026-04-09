@@ -17,8 +17,8 @@ public class UndoCommand extends Command {
             + ": Reverses the most recent command that can be undone.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "Undo successful!";
-    public static final String MESSAGE_NOTHING_TO_UNDO = "No commands to undo.";
+    public static final String MESSAGE_SUCCESS = "Undid the previous command.";
+    public static final String MESSAGE_NOTHING_TO_UNDO = "There are no commands to undo.";
 
     private final CommandHistory commandHistory;
 
