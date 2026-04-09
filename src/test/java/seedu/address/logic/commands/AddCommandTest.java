@@ -117,9 +117,9 @@ public class AddCommandTest {
         Person newPerson = new PersonBuilder().withName("Undo Add").withEmail("undoadd@example.com").build();
         AddCommand addCommand = new AddCommand(newPerson);
 
-        assertThrows(CommandException.class,
-                "Cannot undo add: the added person is no longer in the address book.",
-                () -> addCommand.undo(model));
+        assertThrows(
+                CommandException.class,
+                "Cannot undo add: the added person is no longer in the address book.", () -> addCommand.undo(model));
     }
 
     @Test
@@ -131,9 +131,9 @@ public class AddCommandTest {
         addCommand.execute(model);
         model.deletePerson(newPerson);
 
-        assertThrows(CommandException.class,
-                "Cannot undo add: the added person is no longer in the address book.",
-                () -> addCommand.undo(model));
+        assertThrows(
+                CommandException.class,
+                "Cannot undo add: the added person is no longer in the address book.", () -> addCommand.undo(model));
     }
 
     @Test

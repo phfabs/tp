@@ -273,9 +273,10 @@ public class EditCommandTest {
         Person editedPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         model.deletePerson(editedPerson);
 
-        assertThrows(CommandException.class,
-                "Cannot undo edit: the updated person is no longer in the address book.",
-                () -> editCommand.undo(model));
+        String expectedMessage = "Cannot undo edit: the updated person is no longer in the address book.";
+        assertThrows(
+                CommandException.class,
+                expectedMessage, () -> editCommand.undo(model));
     }
 
     @Test

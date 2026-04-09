@@ -103,9 +103,10 @@ public class RemarkCommandTest {
         Person editedPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         model.deletePerson(editedPerson);
 
-        assertThrows(CommandException.class,
-                "Cannot undo remark: the updated person is no longer in the address book.",
-                () -> remarkCommand.undo(model));
+        String expectedMessage = "Cannot undo remark: the updated person is no longer in the address book.";
+        assertThrows(
+                CommandException.class,
+                expectedMessage, () -> remarkCommand.undo(model));
     }
 
     @Test
