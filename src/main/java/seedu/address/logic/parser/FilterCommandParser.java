@@ -193,7 +193,8 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             String joinBefore = argMultimap.getValue(PREFIX_JOIN_DATE_BEFORE).get().trim();
             verifyJoinDate(joinAfter);
             verifyJoinDate(joinBefore);
-            if (!ParserUtil.parseJoinDate(joinAfter).getDate().isBefore(ParserUtil.parseJoinDate(joinBefore).getDate())) {
+            if (!ParserUtil.parseJoinDate(joinAfter).getDate()
+                    .isBefore(ParserUtil.parseJoinDate(joinBefore).getDate())) {
                 throw new ParseException(MESSAGE_INVALID_FILTER_RANGE);
             }
             predicates.add(new JoinDateAfterPredicate(ParserUtil.parseJoinDate(joinAfter).getDate()));
