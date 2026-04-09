@@ -1,6 +1,11 @@
 package seedu.address.ui;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.logging.Logger;
+
+import javax.print.URIException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,6 +31,7 @@ public class HelpWindow extends UiPart<Stage> {
 
     @FXML
     private Label helpMessage;
+
 
     /**
      * Creates a new HelpWindow.
@@ -63,16 +69,20 @@ public class HelpWindow extends UiPart<Stage> {
      *     </ul>
      */
     public void show() {
-        logger.fine("Showing help page about the application.");
-        getRoot().show();
-        getRoot().centerOnScreen();
-    }
-
-    /**
-     * Returns true if the help window is currently being shown.
-     */
-    public boolean isShowing() {
-        return getRoot().isShowing();
+        try {
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                logger.info("Opening user guide in the browser.");
+                Desktop.getDesktop().browse(java.net.URI.create(USERGUIDE_URL));
+            } else {
+                logger.info("Cannot open user guide in the browser. Desktop API is not supported.");
+                getRoot().show();
+                getRoot().centerOnScreen();
+            }
+        } catch (Exception e)  {
+            logger.info("Failed to open user guide in the browser. " + e.getMessage());
+            getRoot().show();
+            getRoot().centerOnScreen();
+        }
     }
 
     /**
@@ -80,13 +90,6 @@ public class HelpWindow extends UiPart<Stage> {
      */
     public void hide() {
         getRoot().hide();
-    }
-
-    /**
-     * Focuses on the help window.
-     */
-    public void focus() {
-        getRoot().requestFocus();
     }
 
     /**

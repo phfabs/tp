@@ -13,7 +13,9 @@ public class HelpCommand extends Command {
             + ": Opens the help window and shows the list of available commands.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String SHOWING_HELP_MESSAGE = "Opened the help window. Review the command list there.";
+    public static final String SHOWING_HELP_MESSAGE = "User guide should be opened in the browser "
+            + "if not, refer to the url in the help window.";
+
 
     @Override
     public CommandResult execute(Model model) {
