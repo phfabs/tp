@@ -21,7 +21,7 @@ public class FindCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all members whose specific field contains "
             + "the specified query as a literal substring (case-insensitive).\n"
-            + "Supported fields: name, phone, email, emergency contact, and membership type.\n"
+            + "Supported fields: name, phone, email, emergency contact, membership type, member ID, and remark.\n"
             + "Parameters: QUERY\n"
             + "Example: " + COMMAND_WORD + " john doe";
 
