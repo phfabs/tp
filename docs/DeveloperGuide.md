@@ -195,6 +195,14 @@ Step 4. The user executes a new undoable command (e.g. `add`). `commandHistory.p
 
 </box>
 
+The following sequence diagram illustrates the interactions within the `Logic` component when `undo` is executed (assuming `delete 1` was the previous command):
+
+<puml src="diagrams/UndoSequenceDiagram.puml" alt="Undo Sequence Diagram" />
+
+The following sequence diagram illustrates the interactions within the `Logic` component when `redo` is executed (after the `undo` above):
+
+<puml src="diagrams/RedoSequenceDiagram.puml" alt="Redo Sequence Diagram" />
+
 Each undoable command stores the minimal state needed to reverse and reapply itself:
 
 | Command | Data stored | `undo()` | `redo()` |
