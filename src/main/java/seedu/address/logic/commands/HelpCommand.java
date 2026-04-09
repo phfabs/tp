@@ -14,7 +14,7 @@ public class HelpCommand extends Command {
             + "Example: " + COMMAND_WORD;
 
     public static final String SHOWING_HELP_MESSAGE = "User guide should be opened in the browser "
-            + "if not, refer to the url in the help window.";
+            + "if not, refer to this url: https://ay2526s2-cs2103t-w08-3.github.io/tp/UserGuide.html";
 
 
     @Override
