@@ -180,13 +180,7 @@ public class TabCompleter {
             return matches;
         }
 
-        // 5. add: no completion while the user is still typing the first word (the name).
-        //    Once they type a space after the name, suggest field prefixes.
-        if (AddCommand.COMMAND_WORD.equals(commandWord) && !args.contains(" ")) {
-            return new ArrayList<>();
-        }
-
-        // 6. Prefix completion (add with existing args, filter)
+        // 5. Prefix completion (add, filter)
         List<String> prefixes = COMMAND_PREFIXES.get(commandWord);
         if (prefixes == null || prefixes.isEmpty()) {
             return new ArrayList<>();

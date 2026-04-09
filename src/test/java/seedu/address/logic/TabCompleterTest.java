@@ -42,28 +42,23 @@ public class TabCompleterTest {
         assertTrue(results.isEmpty());
     }
 
-    // --- add: no completion until first prefix+value entered ---
+    // --- add: prefix completion immediately after command word ---
 
     @Test
-    public void getCompletions_addWithSpaceOnly_noCompletion() {
-        assertTrue(tabCompleter.getCompletions("add ").isEmpty());
-    }
-
-    @Test
-    public void getCompletions_addAfterName_suggestsAllPrefixes() {
-        List<String> results = tabCompleter.getCompletions("add Alice ");
+    public void getCompletions_addWithSpace_suggestsAllPrefixes() {
+        List<String> results = tabCompleter.getCompletions("add ");
         assertEquals(9, results.size());
-        assertTrue(results.contains("add Alice n/"));
-        assertTrue(results.contains("add Alice p/"));
-        assertTrue(results.contains("add Alice g/"));
-        assertTrue(results.contains("add Alice j/"));
+        assertTrue(results.contains("add n/"));
+        assertTrue(results.contains("add p/"));
+        assertTrue(results.contains("add g/"));
+        assertTrue(results.contains("add j/"));
     }
 
     @Test
-    public void getCompletions_addAfterNameAndPrefix_suggestsRemainingPrefixes() {
-        List<String> results = tabCompleter.getCompletions("add Alice n/Alice ");
-        assertNoneMatch(results, "add Alice n/Alice n/");
-        assertTrue(results.contains("add Alice n/Alice p/"));
+    public void getCompletions_addAfterPrefix_suggestsRemainingPrefixes() {
+        List<String> results = tabCompleter.getCompletions("add n/Alice ");
+        assertNoneMatch(results, "add n/Alice n/");
+        assertTrue(results.contains("add n/Alice p/"));
     }
 
     // --- filter: plain prefix completion ---
