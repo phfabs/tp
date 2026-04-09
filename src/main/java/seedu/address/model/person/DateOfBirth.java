@@ -5,6 +5,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 /**
  * Represents a Person's date of birth in the address book.
@@ -34,7 +36,19 @@ public class DateOfBirth {
      * Returns true if a given string is a valid date of birth.
      */
     public static boolean isValidDateOfBirth(String test) {
-        return test.matches(VALIDATION_REGEX);
+        //if (!test.matches(VALIDATION_REGEX)) {
+        //    return false;
+        //}
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter
+                    .ofPattern("dd-MM-uuuu")
+                    .withResolverStyle(ResolverStyle.STRICT);
+            LocalDate.parse(test, formatter);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
     }
 
     @Override
