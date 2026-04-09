@@ -469,7 +469,6 @@ Pressing `Tab` in the command box provides context-sensitive completions to help
 **Field prefix completion**
 * After entering a command (and index where required), press `Tab` to cycle through available field prefixes.
 * e.g. `filter ` + `Tab` → `filter s/` → `Tab` → `filter g/` → ...
-* For `add`, press `Tab` after typing the member's name to get field prefix suggestions.
 
 **Field value completion**
 * For fields with a fixed set of values (`g/`, `m/`, `s/`), type the first letter of the value and press `Tab` to complete it.
