@@ -112,6 +112,9 @@ FitDesk supports the following commands. Click on a command to learn more.
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
+* Each field prefix may only be specified once per command. Specifying the same prefix more than once will result in an error.<br>
+  e.g. `add n/John n/Jane ...` is invalid.
+
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
@@ -245,6 +248,13 @@ Filters member list and displays members who have fields matching the given attr
 
 Format: `filter [s/STATUS] [g/GENDER] [m/MEMBERSHIP_TYPE] [age>/AGE] [age</AGE] [age=/AGE] [j>/DATE] [j</DATE] [exp>/DATE] [exp</DATE] [exp=/DATE]`
 
+* Each prefix may only be specified once. Specifying the same prefix more than once is an error.
+* For each date/age field, operators may be combined as follows:
+  * `>/` + `</` — range, e.g. `age>/20 age</30` finds members aged strictly between 20 and 30
+  * `>/` + `=/` (same value) — greater than or equal, e.g. `age>/20 age=/20` finds members aged 20 or older
+  * `</` + `=/` (same value) — less than or equal, e.g. `age</30 age=/30` finds members aged 30 or younger
+  * All three operators together are not allowed.
+
 Example:
 * `filter s/valid`
 
@@ -293,6 +303,7 @@ Format: `remark INDEX r/[REMARK]`
 * Edits the remark of the member at the specified `INDEX`. The index refers to the index number shown in the displayed member list. The index **must be a positive integer** 1, 2, 3, …
 * Existing remark will be overwritten by the input.
 * Providing an empty remark (i.e. `r/` with nothing after it) removes the remark from the member.
+* The `r/` prefix may only be specified once.
 
 Examples:
 * `remark 1 r/likes swimming`

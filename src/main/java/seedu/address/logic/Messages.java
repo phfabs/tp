@@ -20,6 +20,10 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d person(s) shown.";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "The following field(s) are already used by another person: ";
+    public static final String MESSAGE_DUPLICATE_PREFIX_FIELDS =
+                "Each field may only be specified once. Duplicate field(s): ";
+    public static final String MESSAGE_CONFLICTING_PREFIXES =
+                "Only one filter operator may be used per field. Conflicting field(s): ";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
@@ -30,7 +34,19 @@ public class Messages {
         Set<String> duplicateFields =
                 Stream.of(duplicatePrefixes).map(Prefix::toString).collect(Collectors.toSet());
 
-        return MESSAGE_DUPLICATE_FIELDS + String.join(" ", duplicateFields);
+        return MESSAGE_DUPLICATE_PREFIX_FIELDS + String.join(" ", duplicateFields);
+    }
+
+    /**
+     * Returns an error message indicating conflicting prefixes within a mutually exclusive group.
+     */
+    public static String getErrorMessageForConflictingPrefixes(Prefix... conflictingPrefixes) {
+        assert conflictingPrefixes.length > 0;
+
+        Set<String> conflictingFields =
+                Stream.of(conflictingPrefixes).map(Prefix::toString).collect(Collectors.toSet());
+
+        return MESSAGE_CONFLICTING_PREFIXES + String.join(" ", conflictingFields);
     }
 
     /**

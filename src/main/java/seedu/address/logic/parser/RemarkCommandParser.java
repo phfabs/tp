@@ -23,6 +23,8 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_REMARK);
 
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_REMARK);
+
         Index index;
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
