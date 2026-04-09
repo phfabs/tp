@@ -1,11 +1,7 @@
 package seedu.address.ui;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
+import java.awt.Desktop;
 import java.util.logging.Logger;
-
-import javax.print.URIException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -78,7 +74,7 @@ public class HelpWindow extends UiPart<Stage> {
                 getRoot().show();
                 getRoot().centerOnScreen();
             }
-        } catch (Exception e)  {
+        } catch (Exception e) {
             logger.info("Failed to open user guide in the browser. " + e.getMessage());
             getRoot().show();
             getRoot().centerOnScreen();
