@@ -46,7 +46,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 The bulk of the app's work is done by the following four components:
 
-* [**`UI`**](#ui-component): The UI of the App.
+* [**`UI`**](#ui-component): The UI of the app.
 * [**`Logic`**](#logic-component): The command executor.
 * [**`Model`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
@@ -64,7 +64,7 @@ Each of the four main components (also shown in the diagram above),
 * defines its *API* in an `interface` with the same name as the Component.
 * implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
 
-For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
+For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside components being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
@@ -342,7 +342,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 3a. The given inputs are invalid.
-    * 3a1.FitDesk shows an error message.
+    * 3a1. FitDesk shows an error message.
 
       Use case resumes at step 2.
 
@@ -376,7 +376,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  Receptionist requests to find members by keyword(s)
-2.  FitDesk searches for members whose names contain any of the given keywords
+2.  FitDesk searches for members whose field contains the given keyword substring
 3.  FitDesk shows a list of matching members
 
     Use case ends.
@@ -428,7 +428,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  Receptionist requests to filter members by status (Active/Inactive)
+1.  Receptionist requests to filter members by status (Active/Invalid)
 2.  FitDesk filters member list by specified status
 3.  FitDesk displays filtered member list
 
@@ -578,9 +578,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 * 4a. Invalid membership type provided
-    * 3a1. FitDesk detects invalid input. 
-      3a2. FitDesk displays an error message and requests correct input.
-      3a3. Receptionist corrects the input.
+    * 4a1. FitDesk detects invalid input. 
+    * 4a2. FitDesk displays an error message and requests correct input.
+    * 4a3. Receptionist corrects the input.
 
       Use case resumes at step 5.
 
@@ -599,10 +599,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
+* **Mainstream OS**: Windows, Linux, Unix, macOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Member**: A registered gym patron whose details are stored and managed in FitDesk
-* **Membership status**: The current standing of a member's membership, which can be one of the following — active, expired, or suspended
+* **Membership status**: The current standing of a member's membership, which can be one of the following — active or invalid
 * **Emergency contact**: A person designated by the member to be contacted in the event of a medical or safety emergency
 
 --------------------------------------------------------------------------------------------------------------------
