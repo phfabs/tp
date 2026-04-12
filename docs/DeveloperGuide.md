@@ -456,7 +456,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  Receptionist requests to filter members by status (Active/Inactive)
+1.  Receptionist requests to filter members by status (Active/Invalid)
 2.  FitDesk filters member list by specified status
 3.  FitDesk displays filtered member list
 
@@ -612,7 +612,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Mainstream OS**: Windows, Linux, Unix, macOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Member**: A registered gym patron whose details are stored and managed in FitDesk
-* **Membership status**: The current standing of a member's membership, which can be one of the following — active, expired, or suspended
+* **Membership status**: The current standing of a member's membership, which can be one of the following — active or invalid
 * **Emergency contact**: A person designated by the member to be contacted in the event of a medical or safety emergency
 
 --------------------------------------------------------------------------------------------------------------------
