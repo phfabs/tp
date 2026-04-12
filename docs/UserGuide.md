@@ -243,7 +243,7 @@ Examples:
 
 Filters member list and displays members who have fields matching the given attribute.
 
-Format: `filter [s/STATUS] [g/GENDER] [m/MEMBERSHIP_TYPE] [age>/AGE] [age</AGE] [age=/AGE] [j>/DATE] [j</DATE] [exp>/DATE] [exp</DATE] [exp=/DATE]`
+Format: `filter [s/STATUS] [g/GENDER] [m/MEMBERSHIP_TYPE] [age>/AGE] [age</AGE] [age=/AGE] [j>/DATE] [j</DATE] [j=/DATE] [exp>/DATE] [exp</DATE] [exp=/DATE]`
 
 Example:
 * `filter s/valid`
