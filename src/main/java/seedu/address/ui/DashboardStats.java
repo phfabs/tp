@@ -24,8 +24,8 @@ public class DashboardStats {
     }
     public static int getExpiring(ObservableList<Person> list) {
         return (int) list.stream().filter(
-                p -> (p.getExpiryDate().getExpiryDate().isBefore(LocalDate.now().plusWeeks(1)))
-                        && (p.getExpiryDate().getExpiryDate().isAfter(LocalDate.now()))
+                p -> (!p.getExpiryDate().getExpiryDate().isBefore(LocalDate.now()))
+                        && (!p.getExpiryDate().getExpiryDate().isAfter(LocalDate.now().plusDays(7)))
         ).count();
     }
     /**
