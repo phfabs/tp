@@ -121,7 +121,7 @@ FitDesk supports the following commands. Click on a command to learn more.
 
 ## Basic Commands
 
-### Viewing help : `help`
+### Viewing help: `help`
 
 Shows a message explaining how to access the help page through a pop-up window.
 
