@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
@@ -64,7 +63,7 @@
 
         <HBox VBox.vgrow="ALWAYS">
           <children>
-            <VBox fx:id="memberDetails" styleClass="pane-with-border" HBox.Hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+            <VBox fx:id="memberDetails" styleClass="pane-with-border" HBox.Hgrow="ALWAYS" VBox.vgrow="ALWAYS" minWidth="250">
               <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
               </padding>

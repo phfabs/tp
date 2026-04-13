@@ -66,6 +66,9 @@ public class MemberDetails extends UiPart<Region> {
         joinDate.setText("Date joined: " + person.getJoinDate().toString());
         expiryDate.setText("Expiry Date: " + person.getExpiryDate().toString());
         name.setText(person.getName().fullName);
+        int nameLen = person.getName().fullName.length();
+        int nameFontSize = nameLen <= 10 ? 50 : nameLen <= 16 ? 38 : nameLen <= 22 ? 28 : 22;
+        name.setStyle("-fx-font-size: " + nameFontSize + "px;");
         phone.setText(person.getPhone().value);
         gender.setText("Gender: " + person.getGender().gender);
         dateOfBirth.setText("Date of Birth: " + person.getDateOfBirth().toString());

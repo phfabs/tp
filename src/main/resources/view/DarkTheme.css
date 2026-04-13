@@ -404,6 +404,16 @@
     -fx-border-color: transparent;
     -fx-background-insets: 0;
     -fx-padding: 0;
+    -fx-min-height: 0;
+}
+.details-remark-area .content {
+    -fx-padding: 12 4 12 4;
+}
+.details-remark-area .scroll-pane {
+    -fx-padding: 0;
+}
+.details-remark-area .scroll-pane .viewport {
+    -fx-background-color: transparent;
 }
 
 #memberStatus.valid-status {
