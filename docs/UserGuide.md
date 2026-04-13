@@ -418,6 +418,8 @@ FitDesk data are saved in the hard disk automatically after any command that cha
 
 FitDesk data are saved automatically as a JSON file `[JAR file location]/data/fitdesk.json`. Advanced users are welcome to update data directly by editing that data file.
 
+Membership **expiry date** must agree with **join date** and **type** (or successive renewals from that); otherwise FitDesk corrects it to the first-period expiry on load.
+
 <box type="warning" seamless>
 
 **Caution:**
