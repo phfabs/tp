@@ -391,7 +391,7 @@ Format: `redo`
 <box type="info" seamless>
 
 **Note:**
-* `redo` is only available immediately after `undo`. Executing any new command (e.g. `add`, `edit`) after an `undo` clears the redo history.
+* `redo` is only available immediately after `undo`. Executing any new **undoable** command (e.g. `add`, `edit`, `delete`, `clear`, `renew`, `remark`) after an `undo` clears the redo history. Commands that do not modify data (e.g. `find`, `filter`, `list`, `help`) do **not** clear the redo history.
 * The redo history can hold up to 20 commands.
 
 </box>
