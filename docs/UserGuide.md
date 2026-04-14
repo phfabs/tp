@@ -547,8 +547,6 @@ Action     | Format, Examples
 **Help**   | `help`
 **Exit**   | `exit`
 
-<div style="page-break-after: always;"></div>
-
 ## Parameter constraints
 Parameter | Constraints
 ----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
