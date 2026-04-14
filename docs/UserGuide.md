@@ -16,6 +16,8 @@ FitDesk is a **desktop app for front-desk receptionists** at small-to-medium pri
 <!-- * Table of Contents -->
 <page-nav-print />
 
+<div style="page-break-after: always;"></div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start
@@ -50,6 +52,8 @@ FitDesk is a **desktop app for front-desk receptionists** at small-to-medium pri
 A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
 ![Ui](images/Ui.png)
+
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -93,6 +97,8 @@ A GUI similar to the below should appear in a few seconds. Note how the app cont
 Refer to the [**Commands**](#features) section below for full details of each command.
 
 Refer to the [**Parameter constraints**](#parameter-constraints) section for the rules on valid parameter values.
+
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
