@@ -27,6 +27,8 @@ import seedu.address.model.person.AgeGreaterThanPredicate;
 import seedu.address.model.person.AgeLessThanPredicate;
 import seedu.address.model.person.JoinDateAfterPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.StatusMatchesPredicate;
+import seedu.address.testutil.PersonBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -124,6 +126,41 @@ public class FilterCommandTest {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, getTypicalPersons().size());
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(getTypicalPersons(), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_statusInvalid_expiredPersonFound() {
+        model.addPerson(new PersonBuilder()
+                .withName("Expired Member")
+                .withPhone("81111111")
+                .withEmergencyContact("82222222")
+                .withEmail("expired@example.com")
+                .withGender("F")
+                .withDateOfBirth("01-01-2000")
+                .withType("monthly")
+                .withJoinDate("10-03-2024")
+                .withExpiryDate("10-04-2024")
+                .build());
+        expectedModel.addPerson(new PersonBuilder()
+                .withName("Expired Member")
+                .withPhone("81111111")
+                .withEmergencyContact("82222222")
+                .withEmail("expired@example.com")
+                .withGender("F")
+                .withDateOfBirth("01-01-2000")
+                .withType("monthly")
+                .withJoinDate("10-03-2024")
+                .withExpiryDate("10-04-2024")
+                .build());
+
+        StatusMatchesPredicate predicate = new StatusMatchesPredicate("invalid");
+        FilterCommand command = new FilterCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(1, model.getFilteredPersonList().size());
+        assertEquals("Invalid", model.getFilteredPersonList().get(0).getMemberStatus().toString());
     }
 
     @Test

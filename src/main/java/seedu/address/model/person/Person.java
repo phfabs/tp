@@ -22,8 +22,6 @@ public class Person {
     private final Email email;
     private final Gender gender;
     private final DateOfBirth dateOfBirth;
-    private final MemberStatus memberStatus;
-
     // Data fields
     private final EmergencyContact emergencyContact;
     private final MembershipType membershipType;
@@ -61,7 +59,6 @@ public class Person {
         this.joinDate = joinDate;
         this.expiryDate = expiryDate;
         this.remark = remark;
-        this.memberStatus = new MemberStatus(this.expiryDate.getExpiryDate(), this.joinDate.getDate());
     }
 
     public MemberId getId() {
@@ -102,7 +99,7 @@ public class Person {
     }
 
     public MemberStatus getMemberStatus() {
-        return this.memberStatus;
+        return new MemberStatus(this.expiryDate.getExpiryDate(), this.joinDate.getDate());
     }
 
     public Remark getRemark() {
@@ -144,7 +141,6 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && gender.equals(otherPerson.gender)
                 && dateOfBirth.equals(otherPerson.dateOfBirth)
-                && memberStatus.equals(otherPerson.memberStatus)
                 && emergencyContact.equals(otherPerson.emergencyContact)
                 && membershipType.equals(otherPerson.membershipType)
                 && joinDate.equals(otherPerson.joinDate)
@@ -157,7 +153,7 @@ public class Person {
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(id, name, phone, email, gender, dateOfBirth,
-                memberStatus, emergencyContact, membershipType, joinDate, expiryDate, remark);
+                emergencyContact, membershipType, joinDate, expiryDate, remark);
     }
 
     @Override

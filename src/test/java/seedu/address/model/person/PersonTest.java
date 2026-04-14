@@ -116,6 +116,16 @@ public class PersonTest {
     }
 
     @Test
+    public void getMemberStatus_expiredMembership_returnsInvalid() {
+        Person expiredMember = new PersonBuilder(ALICE)
+                .withJoinDate("01-01-2024")
+                .withExpiryDate("01-02-2024")
+                .build();
+
+        assertEquals("Invalid", expiredMember.getMemberStatus().toString());
+    }
+
+    @Test
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName()
                 + "{member id=" + ALICE.getId()
