@@ -511,6 +511,16 @@ Pressing `Tab` in the command box provides context-sensitive completions to help
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Planned Enhancements
+
+**Frustrated that you can't renew an expired membership?**
+
+Fret not as our future update has got you covered! We are planning a feature that allows you to renew expired memberships.
+
+Also, look forward to other surprise features 👀
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Command summary
 
 Action     | Format, Examples
